@@ -40,3 +40,4 @@
 ..\..\output\main.o: ..\..\User\./bsp/usart/bsp_debug_usart.h
 ..\..\output\main.o: D:\Keil_v5_for_ARM\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\main.o: ..\..\User\./bsp/rcc/bsp_clkconfig.h
+..\..\output\main.o: ..\..\User\./bsp/spi/bsp_spi_flash.h

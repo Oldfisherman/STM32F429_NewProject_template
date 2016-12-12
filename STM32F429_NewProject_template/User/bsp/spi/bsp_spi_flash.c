@@ -22,71 +22,93 @@ static __IO uint32_t  SPITimeout = SPIT_LONG_TIMEOUT;
 
 static uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode);
 
+/**************************************************************
+                My_LTC6804_C_File_CODE
+**************************************************************/
+//#define TOTAL_IC 1
+
+/*!
+  6804 conversion command variables.
+*/
+uint8_t ADCV[2]; //!< Cell Voltage conversion command.
+uint8_t ADAX[2]; //!< GPIO conversion command.
+
+
+/**************************************************************
+**************************************************************/
+
  /**
   * @brief  SPI_FLASH初始化
   * @param  无
   * @retval 无
   */
-void SPI_FLASH_Init(void)
+void SPI_FLASH_Init(void) //LTC6804 Initialize
 {
-  SPI_InitTypeDef  SPI_InitStructure;
-  GPIO_InitTypeDef GPIO_InitStructure;
+    SPI_InitTypeDef  SPI_InitStructure;
+    GPIO_InitTypeDef GPIO_InitStructure;
   
-  /* 使能 FLASH_SPI 及GPIO 时钟 */
-  /*!< SPI_FLASH_SPI_CS_GPIO, SPI_FLASH_SPI_MOSI_GPIO, 
-       SPI_FLASH_SPI_MISO_GPIO,SPI_FLASH_SPI_SCK_GPIO 时钟使能 */
-  RCC_AHB1PeriphClockCmd (FLASH_SPI_SCK_GPIO_CLK | FLASH_SPI_MISO_GPIO_CLK|FLASH_SPI_MOSI_GPIO_CLK|FLASH_CS_GPIO_CLK, ENABLE);
+    /* 使能 FLASH_SPI 及GPIO 时钟 */
+    /*!< SPI_FLASH_SPI_CS_GPIO, SPI_FLASH_SPI_MOSI_GPIO, 
+    SPI_FLASH_SPI_MISO_GPIO,SPI_FLASH_SPI_SCK_GPIO 时钟使能 */
+    RCC_AHB1PeriphClockCmd (FLASH_SPI_SCK_GPIO_CLK | FLASH_SPI_MISO_GPIO_CLK|FLASH_SPI_MOSI_GPIO_CLK|FLASH_CS_GPIO_CLK, ENABLE);
 
-  /*!< SPI_FLASH_SPI 时钟使能 */
-  FLASH_SPI_CLK_INIT(FLASH_SPI_CLK, ENABLE);
+    /*!< SPI_FLASH_SPI 时钟使能 */
+    FLASH_SPI_CLK_INIT(FLASH_SPI_CLK, ENABLE);
  
-  //设置引脚复用
-  GPIO_PinAFConfig(FLASH_SPI_SCK_GPIO_PORT,FLASH_SPI_SCK_PINSOURCE,FLASH_SPI_SCK_AF); 
+    //设置引脚复用
+    GPIO_PinAFConfig(FLASH_SPI_SCK_GPIO_PORT,FLASH_SPI_SCK_PINSOURCE,FLASH_SPI_SCK_AF); 
 	GPIO_PinAFConfig(FLASH_SPI_MISO_GPIO_PORT,FLASH_SPI_MISO_PINSOURCE,FLASH_SPI_MISO_AF); 
 	GPIO_PinAFConfig(FLASH_SPI_MOSI_GPIO_PORT,FLASH_SPI_MOSI_PINSOURCE,FLASH_SPI_MOSI_AF); 
   
-  /*!< 配置 SPI_FLASH_SPI 引脚: SCK */
-  GPIO_InitStructure.GPIO_Pin = FLASH_SPI_SCK_PIN;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;  
+    /*!< 配置 SPI_FLASH_SPI 引脚: SCK */
+    GPIO_InitStructure.GPIO_Pin = FLASH_SPI_SCK_PIN;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;  
   
-  GPIO_Init(FLASH_SPI_SCK_GPIO_PORT, &GPIO_InitStructure);
+    GPIO_Init(FLASH_SPI_SCK_GPIO_PORT, &GPIO_InitStructure);
   
-	/*!< 配置 SPI_FLASH_SPI 引脚: MISO */
-  GPIO_InitStructure.GPIO_Pin = FLASH_SPI_MISO_PIN;
-  GPIO_Init(FLASH_SPI_MISO_GPIO_PORT, &GPIO_InitStructure);
+    /*!< 配置 SPI_FLASH_SPI 引脚: MISO */
+    GPIO_InitStructure.GPIO_Pin = FLASH_SPI_MISO_PIN;
+    GPIO_Init(FLASH_SPI_MISO_GPIO_PORT, &GPIO_InitStructure);
   
 	/*!< 配置 SPI_FLASH_SPI 引脚: MOSI */
-  GPIO_InitStructure.GPIO_Pin = FLASH_SPI_MOSI_PIN;
-  GPIO_Init(FLASH_SPI_MOSI_GPIO_PORT, &GPIO_InitStructure);  
+    GPIO_InitStructure.GPIO_Pin = FLASH_SPI_MOSI_PIN;
+    GPIO_Init(FLASH_SPI_MOSI_GPIO_PORT, &GPIO_InitStructure);  
 
 	/*!< 配置 SPI_FLASH_SPI 引脚: CS */
-  GPIO_InitStructure.GPIO_Pin = FLASH_CS_PIN;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-  GPIO_Init(FLASH_CS_GPIO_PORT, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = FLASH_CS_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+    GPIO_Init(FLASH_CS_GPIO_PORT, &GPIO_InitStructure);
 
-  /* 停止信号 FLASH: CS引脚高电平*/
-  SPI_FLASH_CS_HIGH();
+    /*CS引脚高电平*/
+    SPI_FLASH_CS_HIGH();
 
-  /* FLASH_SPI 模式配置 */
-  // FLASH芯片 支持SPI模式0及模式3，据此设置CPOL CPHA
-  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-  SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
-  SPI_InitStructure.SPI_CPOL = SPI_CPOL_High;
-  SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;
-  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
-  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
-  SPI_InitStructure.SPI_CRCPolynomial = 7;
-  SPI_Init(FLASH_SPI, &SPI_InitStructure);
+    /* FLASH_SPI 模式配置 */
+    // FLASH芯片 支持SPI模式0及模式3，据此设置CPOL CPHA
+    SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
+    SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
+    SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
+    SPI_InitStructure.SPI_CPOL = SPI_CPOL_High;
+    SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;
+    SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
+    
+    //
+    //LTC6804 SCK最大通信速率为1MHz
+    SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_64;
+    //
+    //
+    
+    SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
+    SPI_InitStructure.SPI_CRCPolynomial = 7;
+    SPI_Init(FLASH_SPI, &SPI_InitStructure);
 
-  /* 使能 FLASH_SPI  */
-  SPI_Cmd(FLASH_SPI, ENABLE);
+    /* 使能 FLASH_SPI  */
+    SPI_Cmd(FLASH_SPI, ENABLE);
 
 }
+
 
  /**
   * @brief  擦除FLASH扇区
@@ -574,3 +596,108 @@ static  uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode)
 }
    
 /*********************************************END OF FILE**********************/
+
+
+
+/*!*******************************************************************************************************************
+ \brief Maps  global ADC control variables to the appropriate control bytes for each of the different ADC commands
+
+@param[in] uint8_t MD The adc conversion mode
+@param[in] uint8_t DCP Controls if Discharge is permitted during cell conversions
+@param[in] uint8_t CH Determines which cells are measured during an ADC conversion command
+@param[in] uint8_t CHG Determines which GPIO channels are measured during Auxiliary conversion command
+
+Command Code:
+-------------
+
+|command  |  15   |  14   |  13   |  12   |  11   |  10   |   9   |   8   |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
+|-----------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+|ADCV:      |   0   |   0   |   0   |   0   |   0   |   0   |   1   | MD[1] | MD[2] |   1   |   1   |  DCP  |   0   | CH[2] | CH[1] | CH[0] |
+|ADAX:      |   0   |   0   |   0   |   0   |   0   |   1   |   0   | MD[1] | MD[2] |   1   |   1   |  DCP  |   0   | CHG[2]| CHG[1]| CHG[0]|
+ ******************************************************************************************************************/
+void set_adc(uint8_t MD, //ADC Mode
+             uint8_t DCP, //Discharge Permit
+             uint8_t CH, //Cell Channels to be measured
+             uint8_t CHG //GPIO Channels to be measured
+            )
+{
+    uint8_t md_bits;
+
+    md_bits = (MD & 0x02) >> 1;
+    ADCV[0] = md_bits + 0x02;
+    md_bits = (MD & 0x01) << 7;
+    ADCV[1] =  md_bits + 0x60 + (DCP<<4) + CH;
+
+    md_bits = (MD & 0x02) >> 1;
+    ADAX[0] = md_bits + 0x04;
+    md_bits = (MD & 0x01) << 7;
+    ADAX[1] = md_bits + 0x60 + CHG ;
+}
+
+/*!***********************************
+ \brief Initializes the configuration array
+ **************************************/
+void init_cfg()
+{
+  for (int i = 0; i<TOTAL_IC; i++)
+  {
+    tx_cfg[i][0] = 0xFE;
+    tx_cfg[i][1] = 0x00 ;
+    tx_cfg[i][2] = 0x00 ;
+    tx_cfg[i][3] = 0x00 ;
+    tx_cfg[i][4] = 0x00 ;
+    tx_cfg[i][5] = 0x00 ;
+  }
+}
+
+/*!****************************************************
+  \brief Wake the LTC6804 from the sleep state
+
+ Generic wakeup commannd to wake the LTC6804 from sleep
+ *****************************************************/
+void wakeup_sleep()
+{
+  SPI_LTC6804_CS_LOW();
+  delay(1); // Guarantees the LTC6804 will be in standby
+  SPI_LTC6804_CS_HIGH();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

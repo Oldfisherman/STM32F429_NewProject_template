@@ -38,6 +38,248 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
+F (..\..\User\main.c)(0x584E715C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
+I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
+I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
+I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
+I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
+I (..\..\User\./bsp/usart/bsp_debug_usart.h)(0x58457384)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+I (..\..\User\./bsp/rcc/bsp_clkconfig.h)(0x5657CADE)
+I (..\..\User\./bsp/spi/bsp_spi_flash.h)(0x584E93DF)
+F (..\..\User\stm32f4xx_it.c)(0x528A232E)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\stm32f4xx_it.o --omf_browse ..\..\output\stm32f4xx_it.crf --depend ..\..\output\stm32f4xx_it.d)
+I (..\..\User\stm32f4xx_it.h)(0x5559F374)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
+I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
+I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
+I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
+I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
+F (..\..\User\bsp\rcc\bsp_clkconfig.c)(0x584E3D2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_clkconfig.o --omf_browse ..\..\output\bsp_clkconfig.crf --depend ..\..\output\bsp_clkconfig.d)
+I (..\..\User\bsp\rcc\./bsp_clkconfig.h)(0x5657CADE)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
+I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
+I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
+I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
+I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
+F (..\..\User\bsp\usart\bsp_debug_usart.c)(0x584E3D23)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_debug_usart.o --omf_browse ..\..\output\bsp_debug_usart.crf --depend ..\..\output\bsp_debug_usart.d)
+I (..\..\User\bsp\usart\./bsp_debug_usart.h)(0x58457384)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
+I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
+I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
+I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
+I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+F (..\..\User\bsp\led\bsp_led.c)(0x584E3DC5)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_led.o --omf_browse ..\..\output\bsp_led.crf --depend ..\..\output\bsp_led.d)
+I (..\..\User\bsp\led\./bsp_led.h)(0x56FCE931)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
+I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
+I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
+I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
+I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
+F (..\..\User\bsp\spi\bsp_spi_flash.c)(0x584E93FA)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_spi_flash.o --omf_browse ..\..\output\bsp_spi_flash.crf --depend ..\..\output\bsp_spi_flash.d)
+I (..\..\User\bsp\spi\./bsp_spi_flash.h)(0x584E93DF)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
+I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
+I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
+I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
+I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
+I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
+I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+F (..\..\User\My_Peripheral_Driver\ltc6804\LTC68041.cpp)(0x584E92ED)(--cpp -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx-o ..\..\output\ltc68041.o --omf_browse ..\..\output\ltc68041.crf --depend ..\..\output\ltc68041.d)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\..\User\My_Peripheral_Driver\ltc6804\./LTC68041.h)(0x584D1DE4)
 F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\misc.c)(0x555C4794)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\misc.o --omf_browse ..\..\output\misc.crf --depend ..\..\output\misc.d)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
@@ -1515,204 +1757,6 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-F (..\..\User\main.c)(0x584E3E5C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
-I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
-I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
-I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
-I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
-I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-I (..\..\User\./bsp/usart/bsp_debug_usart.h)(0x58457384)
-I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdio.h)(0x57F606B8)
-I (..\..\User\./bsp/rcc/bsp_clkconfig.h)(0x5657CADE)
-F (..\..\User\stm32f4xx_it.c)(0x528A232E)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\stm32f4xx_it.o --omf_browse ..\..\output\stm32f4xx_it.crf --depend ..\..\output\stm32f4xx_it.d)
-I (..\..\User\stm32f4xx_it.h)(0x5559F374)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
-I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
-I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
-I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
-I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
-I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-F (..\..\User\bsp\rcc\bsp_clkconfig.c)(0x584E3D2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_clkconfig.o --omf_browse ..\..\output\bsp_clkconfig.crf --depend ..\..\output\bsp_clkconfig.d)
-I (..\..\User\bsp\rcc\./bsp_clkconfig.h)(0x5657CADE)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
-I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
-I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
-I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
-I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
-I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-F (..\..\User\bsp\usart\bsp_debug_usart.c)(0x584E3D23)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_debug_usart.o --omf_browse ..\..\output\bsp_debug_usart.crf --depend ..\..\output\bsp_debug_usart.d)
-I (..\..\User\bsp\usart\./bsp_debug_usart.h)(0x58457384)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
-I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
-I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
-I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
-I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
-I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdio.h)(0x57F606B8)
-F (..\..\User\bsp\led\bsp_led.c)(0x584E3DC5)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_led.o --omf_browse ..\..\output\bsp_led.crf --depend ..\..\output\bsp_led.d)
-I (..\..\User\bsp\led\./bsp_led.h)(0x56FCE931)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
-I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
-I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5559F3AD)
-I (..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5559F39C)
-I (..\..\Libraries\CMSIS\Include\core_cmSimd.h)(0x5559F39B)
-I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5559F432)
-I (..\..\User\stm32f4xx_conf.h)(0x5559F379)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
