@@ -18,6 +18,8 @@
 #include "stm32f4xx.h"
 #include "./bsp/usart/bsp_debug_usart.h"
 #include "./bsp/rcc/bsp_clkconfig.h"
+#include "./bsp/spi/bsp_spi_flash.h"
+
 
 void Delay(__IO u32 nCount); 
 
@@ -30,7 +32,7 @@ int main(void)
 {	
     HSE_SetSysClock(8, 336, 2, 7);//修改第一项 分频值 25 对串口是否正确设置波特率无影响，外部时钟引用仍旧需要修改 头文件中的宏定义
     //HSI_SetSysClock(16, 360, 2, 7);
-  /*初始化USART 配置模式为 115200 8-N-1，中断接收*/
+    /*初始化USART 配置模式为 115200 8-N-1，中断接收*/
     Debug_USART_Config();
 	
 	/* 发送一个字符串 */
@@ -38,9 +40,11 @@ int main(void)
 	//Usart_SendByte(DEBUG_USART,'a');
 	//printf("ks");
 	
-  while(1)
+    SPI_FLASH_Init();
+    
+    while(1)
 	{
-		//Usart_SendString( DEBUG_USART,"as\n");
+		//Usart_SendString(DEBUG_USART,"as\n");
 		Usart_SendByte(DEBUG_USART,0x01);
         //printf("ks");
 		Delay(0x0fffff);
