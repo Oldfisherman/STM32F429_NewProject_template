@@ -41,3 +41,7 @@
 ..\..\output\main.o: D:\Keil_v5_for_ARM\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\main.o: ..\..\User\./bsp/rcc/bsp_clkconfig.h
 ..\..\output\main.o: ..\..\User\./bsp/spi/bsp_spi_flash.h
+..\..\output\main.o: ..\..\User\./bsp/systick/bsp_SysTick.h
+..\..\output\main.o: ..\..\User\./bsp/tim/bsp_basic_tim.h
+..\..\output\main.o: ..\..\User\./bsp/led/bsp_led.h
+..\..\output\main.o: ..\..\User\./bsp/delay/bsp_delay.h

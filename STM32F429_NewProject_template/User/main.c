@@ -20,9 +20,10 @@
 #include "./bsp/rcc/bsp_clkconfig.h"
 #include "./bsp/spi/bsp_spi_flash.h"
 #include "./bsp/systick/bsp_SysTick.h"
+#include "./bsp/tim/bsp_basic_tim.h"
+#include "./bsp/led/bsp_led.h"
+#include "./bsp/delay/bsp_delay.h"
 
-
-void Delay(__IO u32 nCount); 
 
 /**
   * @brief  主函数
@@ -31,8 +32,11 @@ void Delay(__IO u32 nCount);
   */
 int main(void)
 {	
-    HSE_SetSysClock(8, 336, 2, 7);//修改第一项 分频值 25 对串口是否正确设置波特率无影响，外部时钟引用仍旧需要修改 头文件中的宏定义
+    //HSE_SetSysClock(8, 100, 2, 7);//修改第一项 分频值 25 对串口是否正确设置波特率无影响，外部时钟引用仍旧需要修改 头文件中的宏定义
+    //SystemCoreClockUpdate();
     //HSI_SetSysClock(16, 360, 2, 7);
+    
+    HSE_SetSysClock(8, 336, 2, 7);
     /*初始化USART 配置模式为 115200 8-N-1，中断接收*/
     Debug_USART_Config();
 	
@@ -41,20 +45,34 @@ int main(void)
 	//Usart_SendByte(DEBUG_USART,'a');
 	//printf("ks");
 	
-    SPI_FLASH_Init();
+    /* LED 端口初始化 */
+	LED_GPIO_Config();
     
-    while(1)
+    /* 初始化基本定时器定时，10us产生一次中断 */
+	TIMx_Configuration();
+
+	/* 控制LED灯 */
+	while (1)
 	{
+		LED1( ON );			 // 亮 
+		Delay_10_us(100000);
+		LED1( OFF );		  // 灭
+		//Delay_Soft(0x0FFFFF);
+        Delay_10_us(100000);
+	}
+    
+    //SPI_FLASH_Init();
+    
+    
+   // while(1)
+	//{
 		//Usart_SendString(DEBUG_USART,"as\n");
-		Usart_SendByte(DEBUG_USART,0x01);
+		//Usart_SendByte(DEBUG_USART,0x01);
         //printf("ks");
-		Delay(0x0fffff);
-	}	
+		//Delay(0x0fffff);
+	//}	
 }
 
-void Delay(__IO uint32_t nCount)	 //简单的延时函数
-{
-	for(; nCount != 0; nCount--);
-}
+
 /*********************************************END OF FILE**********************/
 

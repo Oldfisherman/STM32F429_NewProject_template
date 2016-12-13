@@ -29,6 +29,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
+#include "./bsp/tim/bsp_basic_tim.h"
+#include "./bsp/delay/bsp_delay.h"
+#include "./bsp/led/bsp_led.h"
 
 /** @addtogroup STM32F429I_DISCOVERY_Examples
   * @{
@@ -145,6 +148,21 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f429_439xx.s).                         */
 /******************************************************************************/
 
+	
+	/**
+  * @brief  This function handles TIM interrupt request.
+  * @param  None
+  * @retval None
+  */	
+void  BASIC_TIM_IRQHandler (void)
+{
+	if ( TIM_GetITStatus( BASIC_TIM, TIM_IT_Update) != RESET ) 
+	{	
+		TimingDelay_Decrement();
+        //LED1_TOGGLE;
+		TIM_ClearITPendingBit(BASIC_TIM , TIM_IT_Update);  		 
+	}		 	
+}
 /**
   * @}
   */ 

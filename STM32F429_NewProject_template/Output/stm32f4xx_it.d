@@ -38,3 +38,6 @@
 ..\..\output\stm32f4xx_it.o: ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h
 ..\..\output\stm32f4xx_it.o: ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h
 ..\..\output\stm32f4xx_it.o: ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h
+..\..\output\stm32f4xx_it.o: ..\..\User\./bsp/tim/bsp_basic_tim.h
+..\..\output\stm32f4xx_it.o: ..\..\User\./bsp/delay/bsp_delay.h
+..\..\output\stm32f4xx_it.o: ..\..\User\./bsp/led/bsp_led.h

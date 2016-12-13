@@ -1,14 +1,14 @@
-#ifndef __LED_H
-#define	__LED_H
+#ifndef __LED_H__
+#define	__LED_H__
 
 #include "stm32f4xx.h"
 
 //引脚定义
 /*******************************************************/
 //R 红色灯
-#define LED1_PIN                  GPIO_Pin_10                 
-#define LED1_GPIO_PORT            GPIOH                      
-#define LED1_GPIO_CLK             RCC_AHB1Periph_GPIOH
+#define LED1_PIN                  GPIO_Pin_7//GPIO_Pin_10                 
+#define LED1_GPIO_PORT            GPIOB//GPIOH                      
+#define LED1_GPIO_CLK             RCC_AHB1Periph_GPIOB//RCC_AHB1Periph_GPIOH
 
 //G 绿色灯
 #define LED2_PIN                  GPIO_Pin_11                 
@@ -26,8 +26,8 @@
 	* LED低电平亮，设置ON=0，OFF=1
 	* 若LED高电平亮，把宏设置成ON=1 ，OFF=0 即可
 	*/
-#define ON  0
-#define OFF 1
+#define ON  1
+#define OFF 0
 
 /* 带参宏，可以像内联函数一样使用 */
 #define LED1(a)	if (a)	\
