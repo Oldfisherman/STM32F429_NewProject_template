@@ -44,4 +44,5 @@
 ..\..\output\main.o: ..\..\User\./bsp/tim/bsp_basic_tim.h
 ..\..\output\main.o: ..\..\User\./bsp/led/bsp_led.h
 ..\..\output\main.o: ..\..\User\./bsp/delay/bsp_delay.h
-..\..\output\main.o: ..\..\User\./bsp/spi/bsp_spi_flash.h
+..\..\output\main.o: ..\..\User\./bsp/spi/bsp_spi3.h
+..\..\output\main.o: ..\..\User\./My_Peripheral_Driver/ltc6804/ltc68041.h

@@ -201,6 +201,7 @@ void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on
                     uint8_t rx_len //Option: number of bytes to be read from the SPI port
                    );
 uint16_t LTC68041_pec15_calc(uint8_t len,uint8_t *data);
+void Spi_ltc68041_init(void);
 //void serial_print_hex(uint8_t data);
 //void LTC68041_print_rxconfig(void);
 

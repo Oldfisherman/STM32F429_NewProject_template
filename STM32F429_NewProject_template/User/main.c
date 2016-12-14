@@ -22,7 +22,8 @@
 #include "./bsp/tim/bsp_basic_tim.h"
 #include "./bsp/led/bsp_led.h"
 #include "./bsp/delay/bsp_delay.h"
-#include "./bsp/spi/bsp_spi_flash.h"
+#include "./bsp/spi/bsp_spi3.h"
+#include "./My_Peripheral_Driver/ltc6804/ltc68041.h"
 
 //
 //
@@ -161,7 +162,8 @@ int main(void)
 	TIMx_Configuration();
     
     /* SPI Initial */
-    SPI_FLASH_Init();
+    //SPI_FLASH_Init();
+    Spi_ltc68041_init( );
 
 	/* ¿ØÖÆLEDµÆ */
 	while (1)

@@ -15,7 +15,7 @@
   ******************************************************************************
   */
   
-#include "./bsp_spi_flash.h"
+#include "./bsp_spi3.h"
 #include "../delay/bsp_delay.h"
 #include "../../My_Peripheral_Driver/ltc6804/LTC68041.h"
 #include <stdlib.h>
@@ -25,19 +25,6 @@ static __IO uint32_t  SPITimeout = SPIT_LONG_TIMEOUT;
 
 static uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode);
 
-/**************************************************************
-                My_LTC6804_C_File_CODE
-**************************************************************/
-
-/*!
-  6804 conversion command variables.
-*/
-uint8_t ADCV[2]; //!< Cell Voltage conversion command.
-uint8_t ADAX[2]; //!< GPIO conversion command.
-
-
-/**************************************************************
-**************************************************************/
 
  /**
   * @brief  SPI_FLASH³õÊ¼»¯
@@ -188,193 +175,193 @@ Command Code:
 |ADCV:      |   0   |   0   |   0   |   0   |   0   |   0   |   1   | MD[1] | MD[2] |   1   |   1   |  DCP  |   0   | CH[2] | CH[1] | CH[0] |
 |ADAX:      |   0   |   0   |   0   |   0   |   0   |   1   |   0   | MD[1] | MD[2] |   1   |   1   |  DCP  |   0   | CHG[2]| CHG[1]| CHG[0]|
  ******************************************************************************************************************/
-void set_adc(uint8_t MD, //ADC Mode
-             uint8_t DCP, //Discharge Permit
-             uint8_t CH, //Cell Channels to be measured
-             uint8_t CHG //GPIO Channels to be measured
-            )
-{
-    uint8_t md_bits;
+//void set_adc(uint8_t MD, //ADC Mode
+//             uint8_t DCP, //Discharge Permit
+//             uint8_t CH, //Cell Channels to be measured
+//             uint8_t CHG //GPIO Channels to be measured
+//            )
+//{
+//    uint8_t md_bits;
 
-    md_bits = (MD & 0x02) >> 1;
-    ADCV[0] = md_bits + 0x02;
-    md_bits = (MD & 0x01) << 7;
-    ADCV[1] =  md_bits + 0x60 + (DCP<<4) + CH;
+//    md_bits = (MD & 0x02) >> 1;
+//    ADCV[0] = md_bits + 0x02;
+//    md_bits = (MD & 0x01) << 7;
+//    ADCV[1] =  md_bits + 0x60 + (DCP<<4) + CH;
 
-    md_bits = (MD & 0x02) >> 1;
-    ADAX[0] = md_bits + 0x04;
-    md_bits = (MD & 0x01) << 7;
-    ADAX[1] = md_bits + 0x60 + CHG ;
-}
-
-
-
-/*!****************************************************
-  \brief Wake the LTC6804 from the sleep state
-
- Generic wakeup commannd to wake the LTC6804 from sleep
- *****************************************************/
-void LTC68041_wakeup_sleep( void )
-{
-  SPI_LTC6804_CS_LOW();
-  Delay_10_us(10); // Guarantees the LTC6804 will be in standby
-  SPI_LTC6804_CS_HIGH();
-}
-
-/*!****************************************************
-  \brief Wake isoSPI up from idle state
- Generic wakeup commannd to wake isoSPI up out of idle
- *****************************************************/
-void LTC68041_wakeup_idle()
-{
-    SPI_LTC6804_CS_LOW();
-    //delayMicroseconds(2); Guarantees the isoSPI will be in ready mode
-    Delay_10_us(200);
-    SPI_LTC6804_CS_HIGH();
-}
-
-/*!******************************************************
- \brief Reads configuration registers of a LTC6804 daisy chain
- 
-@param[in] uint8_t total_ic: number of ICs in the daisy chain
-
-@param[out] uint8_t r_config[][8] is a two dimensional array that the function stores the read configuration data. The configuration data for each IC 
-is stored in blocks of 8 bytes with the configuration data of the lowest IC on the stack in the first 8 bytes 
-block of the array, the second IC in the second 8 byte etc. Below is an table illustrating the array organization:
-
-|r_config[0][0]|r_config[0][1]|r_config[0][2]|r_config[0][3]|r_config[0][4]|r_config[0][5]|r_config[0][6]  |r_config[0][7] |r_config[1][0]|r_config[1][1]|  .....    |
-|--------------|--------------|--------------|--------------|--------------|--------------|----------------|---------------|--------------|--------------|-----------|
-|IC1 CFGR0     |IC1 CFGR1     |IC1 CFGR2     |IC1 CFGR3     |IC1 CFGR4     |IC1 CFGR5     |IC1 PEC High    |IC1 PEC Low    |IC2 CFGR0     |IC2 CFGR1     |  .....    |
+//    md_bits = (MD & 0x02) >> 1;
+//    ADAX[0] = md_bits + 0x04;
+//    md_bits = (MD & 0x01) << 7;
+//    ADAX[1] = md_bits + 0x60 + CHG ;
+//}
 
 
-@return int8_t, PEC Status.
- 
-	0: Data read back has matching PEC
- 
-	-1: Data read back has incorrect PEC
+
+///*!****************************************************
+//  \brief Wake the LTC6804 from the sleep state
+
+// Generic wakeup commannd to wake the LTC6804 from sleep
+// *****************************************************/
+//void LTC68041_wakeup_sleep( void )
+//{
+//  SPI_LTC6804_CS_LOW();
+//  Delay_10_us(10); // Guarantees the LTC6804 will be in standby
+//  SPI_LTC6804_CS_HIGH();
+//}
+
+///*!****************************************************
+//  \brief Wake isoSPI up from idle state
+// Generic wakeup commannd to wake isoSPI up out of idle
+// *****************************************************/
+//void LTC68041_wakeup_idle()
+//{
+//    SPI_LTC6804_CS_LOW();
+//    //delayMicroseconds(2); Guarantees the isoSPI will be in ready mode
+//    Delay_10_us(200);
+//    SPI_LTC6804_CS_HIGH();
+//}
+
+///*!******************************************************
+// \brief Reads configuration registers of a LTC6804 daisy chain
+// 
+//@param[in] uint8_t total_ic: number of ICs in the daisy chain
+
+//@param[out] uint8_t r_config[][8] is a two dimensional array that the function stores the read configuration data. The configuration data for each IC 
+//is stored in blocks of 8 bytes with the configuration data of the lowest IC on the stack in the first 8 bytes 
+//block of the array, the second IC in the second 8 byte etc. Below is an table illustrating the array organization:
+
+//|r_config[0][0]|r_config[0][1]|r_config[0][2]|r_config[0][3]|r_config[0][4]|r_config[0][5]|r_config[0][6]  |r_config[0][7] |r_config[1][0]|r_config[1][1]|  .....    |
+//|--------------|--------------|--------------|--------------|--------------|--------------|----------------|---------------|--------------|--------------|-----------|
+//|IC1 CFGR0     |IC1 CFGR1     |IC1 CFGR2     |IC1 CFGR3     |IC1 CFGR4     |IC1 CFGR5     |IC1 PEC High    |IC1 PEC Low    |IC2 CFGR0     |IC2 CFGR1     |  .....    |
 
 
-Command Code:
--------------
-
-|CMD[0:1]		|  15   |  14   |  13   |  12   |  11   |  10   |   9   |   8   |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   | 
-|---------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-|RDCFG:	        |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   1   |   0   |   0   |   1   |   0   |
-********************************************************/
-int8_t LTC6804_rdcfg(uint8_t total_ic, //Number of ICs in the system
-				     uint8_t r_config[][8] //A two dimensional array that the function stores the read configuration data.
-					 )
-{
-    const uint8_t BYTES_IN_REG = 8;
-  
-    uint8_t cmd[4];
-    uint8_t *rx_data;
-    int8_t pec_error = 0; 
-    uint16_t data_pec;
-    uint16_t received_pec;
-  
-    rx_data = (uint8_t *) malloc((8*total_ic)*sizeof(uint8_t));
-  
-    //1
-    cmd[0] = 0x00;
-    cmd[1] = 0x02;
-    cmd[2] = 0x2b;
-    cmd[3] = 0x0A;
- 
-    //2
-    //wakeup_idle (); //This will guarantee that the LTC6804 isoSPI port is awake. This command can be removed.
-    LTC68041_wakeup_idle();
-    
-    //3
-    //output_low(LTC6804_CS);
-    SPI_LTC6804_CS_LOW();
-  
-    LTC68041_spi_write_read(cmd, 4, rx_data, (BYTES_IN_REG*total_ic));         //Read the configuration data of all ICs on the daisy chain into 
-  
-    //output_high(LTC6804_CS);													//rx_data[] array			
-    SPI_LTC6804_CS_HIGH();
- 
-    for (uint8_t current_ic = 0; current_ic < total_ic; current_ic++) 			//executes for each LTC6804 in the daisy chain and packs the data
-    { 																			//into the r_config array as well as check the received Config data
-																				//for any bit errors	
-        //4.a																		
-        for (uint8_t current_byte = 0; current_byte < BYTES_IN_REG; current_byte++)					
-        {
-            r_config[current_ic][current_byte] = rx_data[current_byte + (current_ic*BYTES_IN_REG)];
-        }
-        
-        //4.b
-        received_pec = (r_config[current_ic][6]<<8) + r_config[current_ic][7];
-        
-        //data_pec = pec15_calc(6, &r_config[current_ic][0]);
-        data_pec = LTC68041_pec15_calc(6, &r_config[current_ic][0]);
-        
-        if(received_pec != data_pec)
-        {
-            pec_error = -1;
-        }  
-  }
-  
-  free(rx_data);
-  
-  //5
-  return(pec_error);
-}
-
-/*!
- \brief Writes and read a set number of bytes using the SPI port.
-
-@param[in] uint8_t tx_data[] array of data to be written on the SPI port
-@param[in] uint8_t tx_len length of the tx_data array
-@param[out] uint8_t rx_data array that read data will be written too.
-@param[in] uint8_t rx_len number of bytes to be read from the SPI port.
-
-*/
-
-void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on SPI port
-                    uint8_t tx_len, //length of the tx data arry
-                    uint8_t *rx_data,//Input: array that will store the data read by the SPI port
-                    uint8_t rx_len //Option: number of bytes to be read from the SPI port
-                   )
-{
-  for (uint8_t i = 0; i < tx_len; i++)
-  {
-      //Spi_write(tx_Data[i]);
-      SPI3_SendByte(tx_Data[i]);
-  }
-
-  for (uint8_t i = 0; i < rx_len; i++)
-  {
-      //rx_data[i] = (uint8_t)Spi_read(0xFF);
-      rx_data[i] = SPI3_ReadByte();
-  }
-
-}
-
-/*!**********************************************************
- \brief calaculates  and returns the CRC15
-
-  @param[in] uint8_t len: the length of the data array being passed to the function
-
-  @param[in] uint8_t data[] : the array of data that the PEC will be generated from
+//@return int8_t, PEC Status.
+// 
+//	0: Data read back has matching PEC
+// 
+//	-1: Data read back has incorrect PEC
 
 
-  @returns The calculated pec15 as an unsigned int
-***********************************************************/
-uint16_t LTC68041_pec15_calc(uint8_t len, //Number of bytes that will be used to calculate a PEC
-                    uint8_t *data //Array of data that will be used to calculate  a PEC
-                   )
-{
-  uint16_t remainder,addr;
+//Command Code:
+//-------------
 
-  remainder = 16;//initialize the PEC
-  for (uint8_t i = 0; i<len; i++) // loops for each byte in data array
-  {
-    addr = ((remainder>>7)^data[i])&0xff;//calculate PEC table address
-    remainder = (remainder<<8)^crc15Table[addr];
-  }
-  return(remainder*2);//The CRC15 has a 0 in the LSB so the remainder must be multiplied by 2
-}
+//|CMD[0:1]		|  15   |  14   |  13   |  12   |  11   |  10   |   9   |   8   |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   | 
+//|---------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+//|RDCFG:	        |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   1   |   0   |   0   |   1   |   0   |
+//********************************************************/
+//int8_t LTC6804_rdcfg(uint8_t total_ic, //Number of ICs in the system
+//				     uint8_t r_config[][8] //A two dimensional array that the function stores the read configuration data.
+//					 )
+//{
+//    const uint8_t BYTES_IN_REG = 8;
+//  
+//    uint8_t cmd[4];
+//    uint8_t *rx_data;
+//    int8_t pec_error = 0; 
+//    uint16_t data_pec;
+//    uint16_t received_pec;
+//  
+//    rx_data = (uint8_t *) malloc((8*total_ic)*sizeof(uint8_t));
+//  
+//    //1
+//    cmd[0] = 0x00;
+//    cmd[1] = 0x02;
+//    cmd[2] = 0x2b;
+//    cmd[3] = 0x0A;
+// 
+//    //2
+//    //wakeup_idle (); //This will guarantee that the LTC6804 isoSPI port is awake. This command can be removed.
+//    LTC68041_wakeup_idle();
+//    
+//    //3
+//    //output_low(LTC6804_CS);
+//    SPI_LTC6804_CS_LOW();
+//  
+//    LTC68041_spi_write_read(cmd, 4, rx_data, (BYTES_IN_REG*total_ic));         //Read the configuration data of all ICs on the daisy chain into 
+//  
+//    //output_high(LTC6804_CS);													//rx_data[] array			
+//    SPI_LTC6804_CS_HIGH();
+// 
+//    for (uint8_t current_ic = 0; current_ic < total_ic; current_ic++) 			//executes for each LTC6804 in the daisy chain and packs the data
+//    { 																			//into the r_config array as well as check the received Config data
+//																				//for any bit errors	
+//        //4.a																		
+//        for (uint8_t current_byte = 0; current_byte < BYTES_IN_REG; current_byte++)					
+//        {
+//            r_config[current_ic][current_byte] = rx_data[current_byte + (current_ic*BYTES_IN_REG)];
+//        }
+//        
+//        //4.b
+//        received_pec = (r_config[current_ic][6]<<8) + r_config[current_ic][7];
+//        
+//        //data_pec = pec15_calc(6, &r_config[current_ic][0]);
+//        data_pec = LTC68041_pec15_calc(6, &r_config[current_ic][0]);
+//        
+//        if(received_pec != data_pec)
+//        {
+//            pec_error = -1;
+//        }  
+//  }
+//  
+//  free(rx_data);
+//  
+//  //5
+//  return(pec_error);
+//}
+
+///*!
+// \brief Writes and read a set number of bytes using the SPI port.
+
+//@param[in] uint8_t tx_data[] array of data to be written on the SPI port
+//@param[in] uint8_t tx_len length of the tx_data array
+//@param[out] uint8_t rx_data array that read data will be written too.
+//@param[in] uint8_t rx_len number of bytes to be read from the SPI port.
+
+//*/
+
+//void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on SPI port
+//                    uint8_t tx_len, //length of the tx data arry
+//                    uint8_t *rx_data,//Input: array that will store the data read by the SPI port
+//                    uint8_t rx_len //Option: number of bytes to be read from the SPI port
+//                   )
+//{
+//  for (uint8_t i = 0; i < tx_len; i++)
+//  {
+//      //Spi_write(tx_Data[i]);
+//      SPI3_SendByte(tx_Data[i]);
+//  }
+
+//  for (uint8_t i = 0; i < rx_len; i++)
+//  {
+//      //rx_data[i] = (uint8_t)Spi_read(0xFF);
+//      rx_data[i] = SPI3_ReadByte();
+//  }
+
+//}
+
+///*!**********************************************************
+// \brief calaculates  and returns the CRC15
+
+//  @param[in] uint8_t len: the length of the data array being passed to the function
+
+//  @param[in] uint8_t data[] : the array of data that the PEC will be generated from
+
+
+//  @returns The calculated pec15 as an unsigned int
+//***********************************************************/
+//uint16_t LTC68041_pec15_calc(uint8_t len, //Number of bytes that will be used to calculate a PEC
+//                    uint8_t *data //Array of data that will be used to calculate  a PEC
+//                   )
+//{
+//  uint16_t remainder,addr;
+
+//  remainder = 16;//initialize the PEC
+//  for (uint8_t i = 0; i<len; i++) // loops for each byte in data array
+//  {
+//    addr = ((remainder>>7)^data[i])&0xff;//calculate PEC table address
+//    remainder = (remainder<<8)^crc15Table[addr];
+//  }
+//  return(remainder*2);//The CRC15 has a 0 in the LSB so the remainder must be multiplied by 2
+//}
 
 
 /*****************************************************//**

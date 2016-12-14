@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\..\Output\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Dec 14 14:34:37 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Dec 14 15:02:48 2016
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -486,15 +486,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC68041_wakeup_idle
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC68041_wakeup_sleep
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC68041_wakeup_sleep
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC68041_wakeup_idle
 </UL>
 
 <P><STRONG><a name="[72]"></a>GPIO_Init</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Init
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_ltc68041_init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GPIO_Config
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_USART_Config
 </UL>
@@ -502,7 +502,7 @@ Global Symbols
 <P><STRONG><a name="[71]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_PinAFConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Init
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_ltc68041_init
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_USART_Config
 </UL>
 
@@ -540,7 +540,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8f]"></a>LTC68041_pec15_calc</STRONG> (Thumb, 46 bytes, Stack size 12 bytes, bsp_spi_flash.o(i.LTC68041_pec15_calc))
+<P><STRONG><a name="[8f]"></a>LTC68041_pec15_calc</STRONG> (Thumb, 46 bytes, Stack size 12 bytes, ltc68041.o(i.LTC68041_pec15_calc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LTC68041_pec15_calc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC6804_rdcfg
@@ -555,7 +555,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[88]"></a>LTC68041_spi_write_read</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, bsp_spi_flash.o(i.LTC68041_spi_write_read))
+<P><STRONG><a name="[88]"></a>LTC68041_spi_write_read</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, ltc68041.o(i.LTC68041_spi_write_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = LTC68041_spi_write_read &rArr; SPI3_SendByte &rArr; SPI_TIMEOUT_UserCallback &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI3_SendByte
@@ -564,7 +564,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC6804_rdcfg
 </UL>
 
-<P><STRONG><a name="[8b]"></a>LTC68041_wakeup_idle</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, bsp_spi_flash.o(i.LTC68041_wakeup_idle))
+<P><STRONG><a name="[8b]"></a>LTC68041_wakeup_idle</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ltc68041.o(i.LTC68041_wakeup_idle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LTC68041_wakeup_idle &rArr; Delay_10_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_10_us
@@ -572,7 +572,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC6804_rdcfg
 </UL>
 
-<P><STRONG><a name="[8c]"></a>LTC68041_wakeup_sleep</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, bsp_spi_flash.o(i.LTC68041_wakeup_sleep))
+<P><STRONG><a name="[8c]"></a>LTC68041_wakeup_sleep</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ltc68041.o(i.LTC68041_wakeup_sleep))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LTC68041_wakeup_sleep &rArr; Delay_10_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_10_us
@@ -580,7 +580,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8d]"></a>LTC6804_rdcfg</STRONG> (Thumb, 148 bytes, Stack size 40 bytes, bsp_spi_flash.o(i.LTC6804_rdcfg))
+<P><STRONG><a name="[8d]"></a>LTC6804_rdcfg</STRONG> (Thumb, 148 bytes, Stack size 40 bytes, ltc68041.o(i.LTC6804_rdcfg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = LTC6804_rdcfg &rArr; LTC68041_spi_write_read &rArr; SPI3_SendByte &rArr; SPI_TIMEOUT_UserCallback &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC68041_wakeup_idle
@@ -616,14 +616,14 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
 </UL>
 <P><STRONG><a name="[70]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Init
+<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_ltc68041_init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GPIO_Config
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_USART_Config
 </UL>
 
 <P><STRONG><a name="[73]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Mode_Config
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Init
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_ltc68041_init
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_USART_Config
 </UL>
 
@@ -684,7 +684,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HSE_SetSysClock
 </UL>
 
-<P><STRONG><a name="[8a]"></a>SPI3_ReadByte</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, bsp_spi_flash.o(i.SPI3_ReadByte))
+<P><STRONG><a name="[8a]"></a>SPI3_ReadByte</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, bsp_spi3.o(i.SPI3_ReadByte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = SPI3_ReadByte &rArr; SPI3_SendByte &rArr; SPI_TIMEOUT_UserCallback &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI3_SendByte
@@ -692,7 +692,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC68041_spi_write_read
 </UL>
 
-<P><STRONG><a name="[89]"></a>SPI3_SendByte</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, bsp_spi_flash.o(i.SPI3_SendByte))
+<P><STRONG><a name="[89]"></a>SPI3_SendByte</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, bsp_spi3.o(i.SPI3_SendByte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = SPI3_SendByte &rArr; SPI_TIMEOUT_UserCallback &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_SendData
@@ -705,20 +705,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[97]"></a>SPI_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Init
-</UL>
-
-<P><STRONG><a name="[95]"></a>SPI_FLASH_Init</STRONG> (Thumb, 204 bytes, Stack size 56 bytes, bsp_spi_flash.o(i.SPI_FLASH_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = SPI_FLASH_Init &rArr; GPIO_Init
-</UL>
-<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Cmd
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-</UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_ltc68041_init
 </UL>
 
 <P><STRONG><a name="[92]"></a>SPI_I2S_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_GetFlagStatus))
@@ -736,12 +723,25 @@ Global Symbols
 <P><STRONG><a name="[96]"></a>SPI_Init</STRONG> (Thumb, 56 bytes, Stack size 12 bytes, stm32f4xx_spi.o(i.SPI_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SPI_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Init
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_ltc68041_init
 </UL>
 
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
 </UL>
+<P><STRONG><a name="[95]"></a>Spi_ltc68041_init</STRONG> (Thumb, 204 bytes, Stack size 56 bytes, ltc68041.o(i.Spi_ltc68041_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Spi_ltc68041_init &rArr; GPIO_Init
+</UL>
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Cmd
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.SysTick_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
 </UL>
@@ -867,7 +867,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; LTC6804_rdcfg &rArr; LTC68041_spi_write_read &rArr; SPI3_SendByte &rArr; SPI_TIMEOUT_UserCallback &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMx_Configuration
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Init
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_ltc68041_init
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC6804_rdcfg
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LTC68041_wakeup_sleep
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GPIO_Config
@@ -902,14 +902,6 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[91]"></a>SPI_TIMEOUT_UserCallback</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, bsp_spi_flash.o(i.SPI_TIMEOUT_UserCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SPI_TIMEOUT_UserCallback &rArr; __2printf
-</UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-</UL>
-<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI3_SendByte
-</UL>
-
 <P><STRONG><a name="[9c]"></a>TIM_Mode_Config</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, bsp_basic_tim.o(i.TIM_Mode_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = TIM_Mode_Config &rArr; TIM_TimeBaseInit
 </UL>
@@ -929,6 +921,14 @@ Local Symbols
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMx_Configuration
+</UL>
+
+<P><STRONG><a name="[91]"></a>SPI_TIMEOUT_UserCallback</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, bsp_spi3.o(i.SPI_TIMEOUT_UserCallback))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SPI_TIMEOUT_UserCallback &rArr; __2printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI3_SendByte
 </UL>
 
 <P><STRONG><a name="[a6]"></a>_printf_core</STRONG> (Thumb, 996 bytes, Stack size 104 bytes, printf8.o(i._printf_core), UNUSED)

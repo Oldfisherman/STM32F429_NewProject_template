@@ -15,15 +15,11 @@
   ******************************************************************************
   */
   
-#include "./bsp_spi_flash.h"
-#include "../delay/bsp_delay.h"
+#include "../../bsp/spi/bsp_spi3.h"
+#include "../../bsp/delay/bsp_delay.h"
 #include "../../My_Peripheral_Driver/ltc6804/LTC68041.h"
 #include <stdlib.h>
 
-
-static __IO uint32_t  SPITimeout = SPIT_LONG_TIMEOUT;   
-
-static uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode);
 
 /**************************************************************
                 My_LTC6804_C_File_CODE
@@ -44,7 +40,7 @@ uint8_t ADAX[2]; //!< GPIO conversion command.
   * @param  нч
   * @retval нч
   */
-void SPI3_LTC68041_Init(void) //LTC6804 Initialize
+void Spi_ltc68041_init(void) //LTC6804 Initialize
 {
     SPI_InitTypeDef  SPI_InitStructure;
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -280,13 +276,13 @@ void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on
   for (uint8_t i = 0; i < tx_len; i++)
   {
       //Spi_write(tx_Data[i]);
-      SPI_FLASH_SendByte(tx_Data[i]);
+      SPI3_SendByte(tx_Data[i]);
   }
 
   for (uint8_t i = 0; i < rx_len; i++)
   {
       //rx_data[i] = (uint8_t)Spi_read(0xFF);
-      rx_data[i] = SPI_FLASH_ReadByte();
+      rx_data[i] = SPI3_ReadByte();
   }
 
 }
@@ -345,51 +341,51 @@ Command Code:
 |---------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 |WRCFG:         |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   1   |
 ********************************************************/
-void LTC6804_wrcfg(uint8_t total_ic, //The number of ICs being written to
-                   uint8_t config[][6] //A two dimensional array of the configuration data that will be written
-                  )
-{
-    const uint8_t BYTES_IN_REG = 6;
-    const uint8_t CMD_LEN = 4+(8*total_ic);
-    uint8_t *cmd;
-    uint16_t cfg_pec;
-    uint8_t cmd_index; //command counter
+//void LTC6804_wrcfg(uint8_t total_ic, //The number of ICs being written to
+//                   uint8_t config[][6] //A two dimensional array of the configuration data that will be written
+//                  )
+//{
+//    const uint8_t BYTES_IN_REG = 6;
+//    const uint8_t CMD_LEN = 4+(8*total_ic);
+//    uint8_t *cmd;
+//    uint16_t cfg_pec;
+//    uint8_t cmd_index; //command counter
 
-    cmd = (uint8_t *)malloc(CMD_LEN*sizeof(uint8_t));
+//    cmd = (uint8_t *)malloc(CMD_LEN*sizeof(uint8_t));
 
-    //1
-    cmd[0] = 0x00;
-    cmd[1] = 0x01;
-    cmd[2] = 0x3d;
-    cmd[3] = 0x6e;
+//    //1
+//    cmd[0] = 0x00;
+//    cmd[1] = 0x01;
+//    cmd[2] = 0x3d;
+//    cmd[3] = 0x6e;
 
-    //2
-    cmd_index = 4;
-    for (uint8_t current_ic = total_ic; current_ic > 0; current_ic--)       // executes for each LTC6804 in daisy chain, this loops starts with
-    {
-        // the last IC on the stack. The first configuration written is
-        // received by the last IC in the daisy chain
+//    //2
+//    cmd_index = 4;
+//    for (uint8_t current_ic = total_ic; current_ic > 0; current_ic--)       // executes for each LTC6804 in daisy chain, this loops starts with
+//    {
+//        // the last IC on the stack. The first configuration written is
+//        // received by the last IC in the daisy chain
 
-        for (uint8_t current_byte = 0; current_byte < BYTES_IN_REG; current_byte++) // executes for each of the 6 bytes in the CFGR register
-        {
-        // current_byte is the byte counter
+//        for (uint8_t current_byte = 0; current_byte < BYTES_IN_REG; current_byte++) // executes for each of the 6 bytes in the CFGR register
+//        {
+//        // current_byte is the byte counter
 
-            cmd[cmd_index] = config[current_ic-1][current_byte];            //adding the config data to the array to be sent
-            cmd_index = cmd_index + 1;
-        }
-        //3
-        cfg_pec = (uint16_t)pec15_calc(BYTES_IN_REG, &config[current_ic-1][0]);   // calculating the PEC for each ICs configuration register data
-        cmd[cmd_index] = (uint8_t)(cfg_pec >> 8);
-        cmd[cmd_index + 1] = (uint8_t)cfg_pec;
-        cmd_index = cmd_index + 2;
-  }
+//            cmd[cmd_index] = config[current_ic-1][current_byte];            //adding the config data to the array to be sent
+//            cmd_index = cmd_index + 1;
+//        }
+//        //3
+//        cfg_pec = (uint16_t)pec15_calc(BYTES_IN_REG, &config[current_ic-1][0]);   // calculating the PEC for each ICs configuration register data
+//        cmd[cmd_index] = (uint8_t)(cfg_pec >> 8);
+//        cmd[cmd_index + 1] = (uint8_t)cfg_pec;
+//        cmd_index = cmd_index + 2;
+//  }
 
-    //4
-    wakeup_idle ();                                 //This will guarantee that the LTC6804 isoSPI port is awake.This command can be removed.
-    //5
-    output_low(LTC6804_CS);
-    spi_write_array(CMD_LEN, cmd);
-    output_high(LTC6804_CS);
-    free(cmd);
-}
+//    //4
+//    wakeup_idle ();                                 //This will guarantee that the LTC6804 isoSPI port is awake.This command can be removed.
+//    //5
+//    output_low(LTC6804_CS);
+//    spi_write_array(CMD_LEN, cmd);
+//    output_high(LTC6804_CS);
+//    free(cmd);
+//}
 
