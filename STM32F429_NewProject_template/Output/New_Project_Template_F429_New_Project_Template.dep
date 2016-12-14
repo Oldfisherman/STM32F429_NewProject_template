@@ -38,7 +38,7 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-F (..\..\User\main.c)(0x584FAE01)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+F (..\..\User\main.c)(0x5850DAB1)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
 I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
 I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
@@ -79,11 +79,11 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
 I (..\..\User\./bsp/usart/bsp_debug_usart.h)(0x58457384)
 I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdio.h)(0x57F606B8)
 I (..\..\User\./bsp/rcc/bsp_clkconfig.h)(0x5657CADE)
-I (..\..\User\./bsp/spi/bsp_spi_flash.h)(0x584EA649)
 I (..\..\User\./bsp/systick/bsp_SysTick.h)(0x584F8936)
 I (..\..\User\./bsp/tim/bsp_basic_tim.h)(0x584F85D9)
 I (..\..\User\./bsp/led/bsp_led.h)(0x584F941A)
-I (..\..\User\./bsp/delay/bsp_delay.h)(0x584F95B5)
+I (..\..\User\./bsp/delay/bsp_delay.h)(0x584FAE54)
+I (..\..\User\./bsp/spi/bsp_spi_flash.h)(0x5850E7E5)
 F (..\..\User\stm32f4xx_it.c)(0x584FAC92)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\stm32f4xx_it.o --omf_browse ..\..\output\stm32f4xx_it.crf --depend ..\..\output\stm32f4xx_it.d)
 I (..\..\User\stm32f4xx_it.h)(0x5559F374)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
@@ -124,7 +124,7 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
 I (..\..\User\./bsp/tim/bsp_basic_tim.h)(0x584F85D9)
-I (..\..\User\./bsp/delay/bsp_delay.h)(0x584F95B5)
+I (..\..\User\./bsp/delay/bsp_delay.h)(0x584FAE54)
 I (..\..\User\./bsp/led/bsp_led.h)(0x584F941A)
 F (..\..\User\bsp\rcc\bsp_clkconfig.c)(0x584FACB9)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_clkconfig.o --omf_browse ..\..\output\bsp_clkconfig.crf --depend ..\..\output\bsp_clkconfig.d)
 I (..\..\User\bsp\rcc\./bsp_clkconfig.h)(0x5657CADE)
@@ -244,8 +244,8 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-F (..\..\User\bsp\spi\bsp_spi_flash.c)(0x584EA66B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_spi_flash.o --omf_browse ..\..\output\bsp_spi_flash.crf --depend ..\..\output\bsp_spi_flash.d)
-I (..\..\User\bsp\spi\./bsp_spi_flash.h)(0x584EA649)
+F (..\..\User\bsp\spi\bsp_spi_flash.c)(0x5850E7F7)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_spi_flash.o --omf_browse ..\..\output\bsp_spi_flash.crf --depend ..\..\output\bsp_spi_flash.d)
+I (..\..\User\bsp\spi\./bsp_spi_flash.h)(0x5850E7E5)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
 I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
 I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
@@ -284,6 +284,9 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
 I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+I (..\..\User\bsp\spi\../delay/bsp_delay.h)(0x584FAE54)
+I (..\..\User\bsp\spi\../../My_Peripheral_Driver/ltc6804/LTC68041.h)(0x5850E589)
+I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 F (..\..\User\bsp\systick\bsp_SysTick.c)(0x584F8923)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_systick.o --omf_browse ..\..\output\bsp_systick.crf --depend ..\..\output\bsp_systick.d)
 I (..\..\User\bsp\systick\./bsp_SysTick.h)(0x584F8936)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
@@ -363,8 +366,8 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
-F (..\..\User\bsp\delay\bsp_delay.c)(0x584F94DC)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_delay.o --omf_browse ..\..\output\bsp_delay.crf --depend ..\..\output\bsp_delay.d)
-I (..\..\User\bsp\delay\./bsp_delay.h)(0x584F95B5)
+F (..\..\User\bsp\delay\bsp_delay.c)(0x584FAE51)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\bsp_delay.o --omf_browse ..\..\output\bsp_delay.crf --depend ..\..\output\bsp_delay.d)
+I (..\..\User\bsp\delay\./bsp_delay.h)(0x584FAE54)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x584E4123)
 I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5559F3AD)
 I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
@@ -403,7 +406,7 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x555C4781)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x555C4781)
 I (..\..\User\bsp\delay\../tim/bsp_basic_tim.h)(0x584F85D9)
-F (..\..\User\My_Peripheral_Driver\ltc6804\LTC68041.cpp)(0x584E92ED)(--cpp -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx-o ..\..\output\ltc68041.o --omf_browse ..\..\output\ltc68041.crf --depend ..\..\output\ltc68041.d)
+F (..\..\User\My_Peripheral_Driver\ltc6804\LTC68041.cpp)(0x5850E613)(--cpp -c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx-o ..\..\output\ltc68041.o --omf_browse ..\..\output\ltc68041.crf --depend ..\..\output\ltc68041.d)
 I (D:\Keil_v5_for_ARM\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\..\User\My_Peripheral_Driver\ltc6804\./LTC68041.h)(0x584D1DE4)
 F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\misc.c)(0x555C4794)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\User-IE:\Synchronization\CodeProject\GitHub\Defond\Battery_Detection\Software\EmbedSoftware\STM32F429_NewProject_template\Project\RVMDK£¨uv5£©\RTE\_New_Project_Template-ID:\Keil_v5_for_ARM\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5_for_ARM\ARM\CMSIS\Include-D__UVISION_VERSION="522" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx --C99-o ..\..\output\misc.o --omf_browse ..\..\output\misc.crf --depend ..\..\output\misc.d)

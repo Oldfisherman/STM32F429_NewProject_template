@@ -16,6 +16,9 @@
   */
   
 #include "./bsp_spi_flash.h"
+#include "../delay/bsp_delay.h"
+#include "../../My_Peripheral_Driver/ltc6804/LTC68041.h"
+#include <stdlib.h>
 
 
 static __IO uint32_t  SPITimeout = SPIT_LONG_TIMEOUT;   
@@ -25,7 +28,6 @@ static uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode);
 /**************************************************************
                 My_LTC6804_C_File_CODE
 **************************************************************/
-//#define TOTAL_IC 1
 
 /*!
   6804 conversion command variables.
@@ -109,478 +111,49 @@ void SPI_FLASH_Init(void) //LTC6804 Initialize
 
 }
 
-
  /**
-  * @brief  擦除FLASH扇区
-  * @param  SectorAddr：要擦除的扇区地址
-  * @retval 无
+  * @brief  使用SPI发送一个字节的数据
+  * @param  byte：要发送的数据
+  * @retval 返回接收到的数据
   */
-void SPI_FLASH_SectorErase(u32 SectorAddr)
+u8 SPI3_SendByte(u8 byte)
 {
-  /* 发送FLASH写使能命令 */
-  SPI_FLASH_WriteEnable();
-  SPI_FLASH_WaitForWriteEnd();
-  /* 擦除扇区 */
-  /* 选择FLASH: CS低电平 */
-  SPI_FLASH_CS_LOW();
-  /* 发送扇区擦除指令*/
-  SPI_FLASH_SendByte(W25X_SectorErase);
-  /*发送擦除扇区地址的高位*/
-  SPI_FLASH_SendByte((SectorAddr & 0xFF0000) >> 16);
-  /* 发送擦除扇区地址的中位 */
-  SPI_FLASH_SendByte((SectorAddr & 0xFF00) >> 8);
-  /* 发送擦除扇区地址的低位 */
-  SPI_FLASH_SendByte(SectorAddr & 0xFF);
-  /* 停止信号 FLASH: CS 高电平 */
-  SPI_FLASH_CS_HIGH();
-  /* 等待擦除完毕*/
-  SPI_FLASH_WaitForWriteEnd();
-}
+    SPITimeout = SPIT_FLAG_TIMEOUT;
+    uint8_t r;
 
-
- /**
-  * @brief  擦除FLASH扇区，整片擦除
-  * @param  无
-  * @retval 无
-  */
-void SPI_FLASH_BulkErase(void)
-{
-  /* 发送FLASH写使能命令 */
-  SPI_FLASH_WriteEnable();
-
-  /* 整块 Erase */
-  /* 选择FLASH: CS低电平 */
-  SPI_FLASH_CS_LOW();
-  /* 发送整块擦除指令*/
-  SPI_FLASH_SendByte(W25X_ChipErase);
-  /* 停止信号 FLASH: CS 高电平 */
-  SPI_FLASH_CS_HIGH();
-
-  /* 等待擦除完毕*/
-  SPI_FLASH_WaitForWriteEnd();
-}
-
-
-
- /**
-  * @brief  对FLASH按页写入数据，调用本函数写入数据前需要先擦除扇区
-  * @param	pBuffer，要写入数据的指针
-  * @param WriteAddr，写入地址
-  * @param  NumByteToWrite，写入数据长度，必须小于等于SPI_FLASH_PerWritePageSize
-  * @retval 无
-  */
-void SPI_FLASH_PageWrite(u8* pBuffer, u32 WriteAddr, u16 NumByteToWrite)
-{
-  /* 发送FLASH写使能命令 */
-  SPI_FLASH_WriteEnable();
-
-  /* 选择FLASH: CS低电平 */
-  SPI_FLASH_CS_LOW();
-  /* 写页写指令*/
-  SPI_FLASH_SendByte(W25X_PageProgram);
-  /*发送写地址的高位*/
-  SPI_FLASH_SendByte((WriteAddr & 0xFF0000) >> 16);
-  /*发送写地址的中位*/
-  SPI_FLASH_SendByte((WriteAddr & 0xFF00) >> 8);
-  /*发送写地址的低位*/
-  SPI_FLASH_SendByte(WriteAddr & 0xFF);
-
-  if(NumByteToWrite > SPI_FLASH_PerWritePageSize)
-  {
-     NumByteToWrite = SPI_FLASH_PerWritePageSize;
-     FLASH_ERROR("SPI_FLASH_PageWrite too large!");
-  }
-
-  /* 写入数据*/
-  while (NumByteToWrite--)
-  {
-    /* 发送当前要写入的字节数据 */
-    SPI_FLASH_SendByte(*pBuffer);
-    /* 指向下一字节数据 */
-    pBuffer++;
-  }
-
-  /* 停止信号 FLASH: CS 高电平 */
-  SPI_FLASH_CS_HIGH();
-
-  /* 等待写入完毕*/
-  SPI_FLASH_WaitForWriteEnd();
-}
-
-
- /**
-  * @brief  对FLASH写入数据，调用本函数写入数据前需要先擦除扇区
-  * @param	pBuffer，要写入数据的指针
-  * @param  WriteAddr，写入地址
-  * @param  NumByteToWrite，写入数据长度
-  * @retval 无
-  */
-void SPI_FLASH_BufferWrite(u8* pBuffer, u32 WriteAddr, u16 NumByteToWrite)
-{
-  u8 NumOfPage = 0, NumOfSingle = 0, Addr = 0, count = 0, temp = 0;
-	
-	/*mod运算求余，若writeAddr是SPI_FLASH_PageSize整数倍，运算结果Addr值为0*/
-  Addr = WriteAddr % SPI_FLASH_PageSize;
-	
-	/*差count个数据值，刚好可以对齐到页地址*/
-  count = SPI_FLASH_PageSize - Addr;	
-	/*计算出要写多少整数页*/
-  NumOfPage =  NumByteToWrite / SPI_FLASH_PageSize;
-	/*mod运算求余，计算出剩余不满一页的字节数*/
-  NumOfSingle = NumByteToWrite % SPI_FLASH_PageSize;
-
-	 /* Addr=0,则WriteAddr 刚好按页对齐 aligned  */
-  if (Addr == 0) 
-  {
-		/* NumByteToWrite < SPI_FLASH_PageSize */
-    if (NumOfPage == 0) 
+    /* 等待发送缓冲区为空，TXE事件 */
+    while (SPI_I2S_GetFlagStatus(FLASH_SPI, SPI_I2S_FLAG_TXE) == RESET)
     {
-      SPI_FLASH_PageWrite(pBuffer, WriteAddr, NumByteToWrite);
+        if((SPITimeout--) == 0) return SPI_TIMEOUT_UserCallback(0);
     }
-    else /* NumByteToWrite > SPI_FLASH_PageSize */
+
+    /* 写入数据寄存器，把要写入的数据写入发送缓冲区 */
+    SPI_I2S_SendData(FLASH_SPI, byte);
+
+    SPITimeout = SPIT_FLAG_TIMEOUT;
+
+    /* 等待接收缓冲区非空，RXNE事件 */
+    while (SPI_I2S_GetFlagStatus(FLASH_SPI, SPI_I2S_FLAG_RXNE) == RESET)
     {
-			/*先把整数页都写了*/
-      while (NumOfPage--)
-      {
-        SPI_FLASH_PageWrite(pBuffer, WriteAddr, SPI_FLASH_PageSize);
-        WriteAddr +=  SPI_FLASH_PageSize;
-        pBuffer += SPI_FLASH_PageSize;
-      }
-			
-			/*若有多余的不满一页的数据，把它写完*/
-      SPI_FLASH_PageWrite(pBuffer, WriteAddr, NumOfSingle);
+        if((SPITimeout--) == 0) return SPI_TIMEOUT_UserCallback(1);
     }
-  }
-	/* 若地址与 SPI_FLASH_PageSize 不对齐  */
-  else 
-  {
-		/* NumByteToWrite < SPI_FLASH_PageSize */
-    if (NumOfPage == 0) 
-    {
-			/*当前页剩余的count个位置比NumOfSingle小，写不完*/
-      if (NumOfSingle > count) 
-      {
-        temp = NumOfSingle - count;
-				
-				/*先写满当前页*/
-        SPI_FLASH_PageWrite(pBuffer, WriteAddr, count);
-        WriteAddr +=  count;
-        pBuffer += count;
-				
-				/*再写剩余的数据*/
-        SPI_FLASH_PageWrite(pBuffer, WriteAddr, temp);
-      }
-      else /*当前页剩余的count个位置能写完NumOfSingle个数据*/
-      {				
-        SPI_FLASH_PageWrite(pBuffer, WriteAddr, NumByteToWrite);
-      }
-    }
-    else /* NumByteToWrite > SPI_FLASH_PageSize */
-    {
-			/*地址不对齐多出的count分开处理，不加入这个运算*/
-      NumByteToWrite -= count;
-      NumOfPage =  NumByteToWrite / SPI_FLASH_PageSize;
-      NumOfSingle = NumByteToWrite % SPI_FLASH_PageSize;
 
-      SPI_FLASH_PageWrite(pBuffer, WriteAddr, count);
-      WriteAddr +=  count;
-      pBuffer += count;
-			
-			/*把整数页都写了*/
-      while (NumOfPage--)
-      {
-        SPI_FLASH_PageWrite(pBuffer, WriteAddr, SPI_FLASH_PageSize);
-        WriteAddr +=  SPI_FLASH_PageSize;
-        pBuffer += SPI_FLASH_PageSize;
-      }
-			/*若有多余的不满一页的数据，把它写完*/
-      if (NumOfSingle != 0)
-      {
-        SPI_FLASH_PageWrite(pBuffer, WriteAddr, NumOfSingle);
-      }
-    }
-  }
+    /* 读取数据寄存器，获取接收缓冲区数据 */
+    r = SPI_I2S_ReceiveData(FLASH_SPI);
+    //return SPI_I2S_ReceiveData(FLASH_SPI);
+    //printf ("%02x ",r);
+    return r;
 }
-
- /**
-  * @brief  读取FLASH数据
-  * @param 	pBuffer，存储读出数据的指针
-  * @param   ReadAddr，读取地址
-  * @param   NumByteToRead，读取数据长度
-  * @retval 无
-  */
-void SPI_FLASH_BufferRead(u8* pBuffer, u32 ReadAddr, u16 NumByteToRead)
-{
-  /* 选择FLASH: CS低电平 */
-  SPI_FLASH_CS_LOW();
-
-  /* 发送 读 指令 */
-  SPI_FLASH_SendByte(W25X_ReadData);
-
-  /* 发送 读 地址高位 */
-  SPI_FLASH_SendByte((ReadAddr & 0xFF0000) >> 16);
-  /* 发送 读 地址中位 */
-  SPI_FLASH_SendByte((ReadAddr& 0xFF00) >> 8);
-  /* 发送 读 地址低位 */
-  SPI_FLASH_SendByte(ReadAddr & 0xFF);
-  
-	/* 读取数据 */
-  while (NumByteToRead--)
-  {
-    /* 读取一个字节*/
-    *pBuffer = SPI_FLASH_SendByte(Dummy_Byte);
-    /* 指向下一个字节缓冲区 */
-    pBuffer++;
-  }
-
-  /* 停止信号 FLASH: CS 高电平 */
-  SPI_FLASH_CS_HIGH();
-}
-
-
- /**
-  * @brief  读取FLASH ID
-  * @param 	无
-  * @retval FLASH ID
-  */
-u32 SPI_FLASH_ReadID(void)
-{
-  u32 Temp = 0, Temp0 = 0, Temp1 = 0, Temp2 = 0;
-
-  /* 开始通讯：CS低电平 */
-  SPI_FLASH_CS_LOW();
-
-  /* 发送JEDEC指令，读取ID */
-  SPI_FLASH_SendByte(W25X_JedecDeviceID);
-
-  /* 读取一个字节数据 */
-  Temp0 = SPI_FLASH_SendByte(Dummy_Byte);
-
-  /* 读取一个字节数据 */
-  Temp1 = SPI_FLASH_SendByte(Dummy_Byte);
-
-  /* 读取一个字节数据 */
-  Temp2 = SPI_FLASH_SendByte(Dummy_Byte);
-
-  /* 停止通讯：CS高电平 */
-  SPI_FLASH_CS_HIGH();
-
-	/*把数据组合起来，作为函数的返回值*/
-  Temp = (Temp0 << 16) | (Temp1 << 8) | Temp2;
-
-  return Temp;
-}
-
- /**
-  * @brief  读取FLASH Device ID
-  * @param 	无
-  * @retval FLASH Device ID
-  */
-u32 SPI_FLASH_ReadDeviceID(void)
-{
-  u32 Temp = 0;
-
-  /* Select the FLASH: Chip Select low */
-  SPI_FLASH_CS_LOW();
-
-  /* Send "RDID " instruction */
-  SPI_FLASH_SendByte(W25X_DeviceID);
-  SPI_FLASH_SendByte(Dummy_Byte);
-  SPI_FLASH_SendByte(Dummy_Byte);
-  SPI_FLASH_SendByte(Dummy_Byte);
-  
-  /* Read a byte from the FLASH */
-  Temp = SPI_FLASH_SendByte(Dummy_Byte);
-
-  /* Deselect the FLASH: Chip Select high */
-  SPI_FLASH_CS_HIGH();
-
-  return Temp;
-}
-/*******************************************************************************
-* Function Name  : SPI_FLASH_StartReadSequence
-* Description    : Initiates a read data byte (READ) sequence from the Flash.
-*                  This is done by driving the /CS line low to select the device,
-*                  then the READ instruction is transmitted followed by 3 bytes
-*                  address. This function exit and keep the /CS line low, so the
-*                  Flash still being selected. With this technique the whole
-*                  content of the Flash is read with a single READ instruction.
-* Input          : - ReadAddr : FLASH's internal address to read from.
-* Output         : None
-* Return         : None
-*******************************************************************************/
-void SPI_FLASH_StartReadSequence(u32 ReadAddr)
-{
-  /* Select the FLASH: Chip Select low */
-  SPI_FLASH_CS_LOW();
-
-  /* Send "Read from Memory " instruction */
-  SPI_FLASH_SendByte(W25X_ReadData);
-
-  /* Send the 24-bit address of the address to read from -----------------------*/
-  /* Send ReadAddr high nibble address byte */
-  SPI_FLASH_SendByte((ReadAddr & 0xFF0000) >> 16);
-  /* Send ReadAddr medium nibble address byte */
-  SPI_FLASH_SendByte((ReadAddr& 0xFF00) >> 8);
-  /* Send ReadAddr low nibble address byte */
-  SPI_FLASH_SendByte(ReadAddr & 0xFF);
-}
-
 
  /**
   * @brief  使用SPI读取一个字节的数据
   * @param  无
   * @retval 返回接收到的数据
   */
-u8 SPI_FLASH_ReadByte(void)
+u8 SPI3_ReadByte(void)
 {
-  return (SPI_FLASH_SendByte(Dummy_Byte));
+  return (SPI3_SendByte(Dummy_Byte));
 }
-
-
- /**
-  * @brief  使用SPI发送一个字节的数据
-  * @param  byte：要发送的数据
-  * @retval 返回接收到的数据
-  */
-u8 SPI_FLASH_SendByte(u8 byte)
-{
-  SPITimeout = SPIT_FLAG_TIMEOUT;
-
-  /* 等待发送缓冲区为空，TXE事件 */
-  while (SPI_I2S_GetFlagStatus(FLASH_SPI, SPI_I2S_FLAG_TXE) == RESET)
-   {
-    if((SPITimeout--) == 0) return SPI_TIMEOUT_UserCallback(0);
-   }
-
-  /* 写入数据寄存器，把要写入的数据写入发送缓冲区 */
-  SPI_I2S_SendData(FLASH_SPI, byte);
-
-  SPITimeout = SPIT_FLAG_TIMEOUT;
-
-  /* 等待接收缓冲区非空，RXNE事件 */
-  while (SPI_I2S_GetFlagStatus(FLASH_SPI, SPI_I2S_FLAG_RXNE) == RESET)
-   {
-    if((SPITimeout--) == 0) return SPI_TIMEOUT_UserCallback(1);
-   }
-
-  /* 读取数据寄存器，获取接收缓冲区数据 */
-  return SPI_I2S_ReceiveData(FLASH_SPI);
-}
-
-/*******************************************************************************
-* Function Name  : SPI_FLASH_SendHalfWord
-* Description    : Sends a Half Word through the SPI interface and return the
-*                  Half Word received from the SPI bus.
-* Input          : Half Word : Half Word to send.
-* Output         : None
-* Return         : The value of the received Half Word.
-*******************************************************************************/
-u16 SPI_FLASH_SendHalfWord(u16 HalfWord)
-{
-  
-  SPITimeout = SPIT_FLAG_TIMEOUT;
-
-  /* Loop while DR register in not emplty */
-  while (SPI_I2S_GetFlagStatus(FLASH_SPI, SPI_I2S_FLAG_TXE) == RESET)
-  {
-    if((SPITimeout--) == 0) return SPI_TIMEOUT_UserCallback(2);
-   }
-
-  /* Send Half Word through the FLASH_SPI peripheral */
-  SPI_I2S_SendData(FLASH_SPI, HalfWord);
-
-  SPITimeout = SPIT_FLAG_TIMEOUT;
-
-  /* Wait to receive a Half Word */
-  while (SPI_I2S_GetFlagStatus(FLASH_SPI, SPI_I2S_FLAG_RXNE) == RESET)
-   {
-    if((SPITimeout--) == 0) return SPI_TIMEOUT_UserCallback(3);
-   }
-  /* Return the Half Word read from the SPI bus */
-  return SPI_I2S_ReceiveData(FLASH_SPI);
-}
-
-
- /**
-  * @brief  向FLASH发送 写使能 命令
-  * @param  none
-  * @retval none
-  */
-void SPI_FLASH_WriteEnable(void)
-{
-  /* 通讯开始：CS低 */
-  SPI_FLASH_CS_LOW();
-
-  /* 发送写使能命令*/
-  SPI_FLASH_SendByte(W25X_WriteEnable);
-
-  /*通讯结束：CS高 */
-  SPI_FLASH_CS_HIGH();
-}
-
- /**
-  * @brief  等待WIP(BUSY)标志被置0，即等待到FLASH内部数据写入完毕
-  * @param  none
-  * @retval none
-  */
-void SPI_FLASH_WaitForWriteEnd(void)
-{
-  u8 FLASH_Status = 0;
-
-  /* 选择 FLASH: CS 低 */
-  SPI_FLASH_CS_LOW();
-
-  /* 发送 读状态寄存器 命令 */
-  SPI_FLASH_SendByte(W25X_ReadStatusReg);
-
-  SPITimeout = SPIT_FLAG_TIMEOUT;
-  /* 若FLASH忙碌，则等待 */
-  do
-  {
-    /* 读取FLASH芯片的状态寄存器 */
-    FLASH_Status = SPI_FLASH_SendByte(Dummy_Byte);	 
-
-    {
-      if((SPITimeout--) == 0) 
-      {
-        SPI_TIMEOUT_UserCallback(4);
-        return;
-      }
-    } 
-  }
-  while ((FLASH_Status & WIP_Flag) == SET); /* 正在写入标志 */
-
-  /* 停止信号  FLASH: CS 高 */
-  SPI_FLASH_CS_HIGH();
-}
-
-
-//进入掉电模式
-void SPI_Flash_PowerDown(void)   
-{ 
-  /* 选择 FLASH: CS 低 */
-  SPI_FLASH_CS_LOW();
-
-  /* 发送 掉电 命令 */
-  SPI_FLASH_SendByte(W25X_PowerDown);
-
-  /* 停止信号  FLASH: CS 高 */
-  SPI_FLASH_CS_HIGH();
-}   
-
-//唤醒
-void SPI_Flash_WAKEUP(void)   
-{
-  /*选择 FLASH: CS 低 */
-  SPI_FLASH_CS_LOW();
-
-  /* 发上 上电 命令 */
-  SPI_FLASH_SendByte(W25X_ReleasePowerDown);
-
-  /* 停止信号 FLASH: CS 高 */
-  SPI_FLASH_CS_HIGH();                   //等待TRES1
-}   
 
 
 /**
@@ -591,7 +164,7 @@ void SPI_Flash_WAKEUP(void)
 static  uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode)
 {
   /* 等待超时后的处理,输出错误信息 */
-  FLASH_ERROR("SPI 等待超时!errorCode = %d",errorCode);
+  SPI_ERROR("SPI overtime errorCode = %d",errorCode);
   return 0;
 }
    
@@ -634,60 +207,251 @@ void set_adc(uint8_t MD, //ADC Mode
     ADAX[1] = md_bits + 0x60 + CHG ;
 }
 
-/*!***********************************
- \brief Initializes the configuration array
- **************************************/
-void init_cfg()
-{
-  for (int i = 0; i<TOTAL_IC; i++)
-  {
-    tx_cfg[i][0] = 0xFE;
-    tx_cfg[i][1] = 0x00 ;
-    tx_cfg[i][2] = 0x00 ;
-    tx_cfg[i][3] = 0x00 ;
-    tx_cfg[i][4] = 0x00 ;
-    tx_cfg[i][5] = 0x00 ;
-  }
-}
+
 
 /*!****************************************************
   \brief Wake the LTC6804 from the sleep state
 
  Generic wakeup commannd to wake the LTC6804 from sleep
  *****************************************************/
-void wakeup_sleep()
+void LTC68041_wakeup_sleep( void )
 {
   SPI_LTC6804_CS_LOW();
-  delay(1); // Guarantees the LTC6804 will be in standby
+  Delay_10_us(10); // Guarantees the LTC6804 will be in standby
   SPI_LTC6804_CS_HIGH();
 }
 
+/*!****************************************************
+  \brief Wake isoSPI up from idle state
+ Generic wakeup commannd to wake isoSPI up out of idle
+ *****************************************************/
+void LTC68041_wakeup_idle()
+{
+    SPI_LTC6804_CS_LOW();
+    //delayMicroseconds(2); Guarantees the isoSPI will be in ready mode
+    Delay_10_us(200);
+    SPI_LTC6804_CS_HIGH();
+}
+
+/*!******************************************************
+ \brief Reads configuration registers of a LTC6804 daisy chain
+ 
+@param[in] uint8_t total_ic: number of ICs in the daisy chain
+
+@param[out] uint8_t r_config[][8] is a two dimensional array that the function stores the read configuration data. The configuration data for each IC 
+is stored in blocks of 8 bytes with the configuration data of the lowest IC on the stack in the first 8 bytes 
+block of the array, the second IC in the second 8 byte etc. Below is an table illustrating the array organization:
+
+|r_config[0][0]|r_config[0][1]|r_config[0][2]|r_config[0][3]|r_config[0][4]|r_config[0][5]|r_config[0][6]  |r_config[0][7] |r_config[1][0]|r_config[1][1]|  .....    |
+|--------------|--------------|--------------|--------------|--------------|--------------|----------------|---------------|--------------|--------------|-----------|
+|IC1 CFGR0     |IC1 CFGR1     |IC1 CFGR2     |IC1 CFGR3     |IC1 CFGR4     |IC1 CFGR5     |IC1 PEC High    |IC1 PEC Low    |IC2 CFGR0     |IC2 CFGR1     |  .....    |
 
 
+@return int8_t, PEC Status.
+ 
+	0: Data read back has matching PEC
+ 
+	-1: Data read back has incorrect PEC
 
 
+Command Code:
+-------------
+
+|CMD[0:1]		|  15   |  14   |  13   |  12   |  11   |  10   |   9   |   8   |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   | 
+|---------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+|RDCFG:	        |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   1   |   0   |   0   |   1   |   0   |
+********************************************************/
+int8_t LTC6804_rdcfg(uint8_t total_ic, //Number of ICs in the system
+				     uint8_t r_config[][8] //A two dimensional array that the function stores the read configuration data.
+					 )
+{
+    const uint8_t BYTES_IN_REG = 8;
+  
+    uint8_t cmd[4];
+    uint8_t *rx_data;
+    int8_t pec_error = 0; 
+    uint16_t data_pec;
+    uint16_t received_pec;
+  
+    rx_data = (uint8_t *) malloc((8*total_ic)*sizeof(uint8_t));
+  
+    //1
+    cmd[0] = 0x00;
+    cmd[1] = 0x02;
+    cmd[2] = 0x2b;
+    cmd[3] = 0x0A;
+ 
+    //2
+    //wakeup_idle (); //This will guarantee that the LTC6804 isoSPI port is awake. This command can be removed.
+    LTC68041_wakeup_idle();
+    
+    //3
+    //output_low(LTC6804_CS);
+    SPI_LTC6804_CS_LOW();
+  
+    LTC68041_spi_write_read(cmd, 4, rx_data, (BYTES_IN_REG*total_ic));         //Read the configuration data of all ICs on the daisy chain into 
+  
+    //output_high(LTC6804_CS);													//rx_data[] array			
+    SPI_LTC6804_CS_HIGH();
+ 
+    for (uint8_t current_ic = 0; current_ic < total_ic; current_ic++) 			//executes for each LTC6804 in the daisy chain and packs the data
+    { 																			//into the r_config array as well as check the received Config data
+																				//for any bit errors	
+        //4.a																		
+        for (uint8_t current_byte = 0; current_byte < BYTES_IN_REG; current_byte++)					
+        {
+            r_config[current_ic][current_byte] = rx_data[current_byte + (current_ic*BYTES_IN_REG)];
+        }
+        
+        //4.b
+        received_pec = (r_config[current_ic][6]<<8) + r_config[current_ic][7];
+        
+        //data_pec = pec15_calc(6, &r_config[current_ic][0]);
+        data_pec = LTC68041_pec15_calc(6, &r_config[current_ic][0]);
+        
+        if(received_pec != data_pec)
+        {
+            pec_error = -1;
+        }  
+  }
+  
+  free(rx_data);
+  
+  //5
+  return(pec_error);
+}
+
+/*!
+ \brief Writes and read a set number of bytes using the SPI port.
+
+@param[in] uint8_t tx_data[] array of data to be written on the SPI port
+@param[in] uint8_t tx_len length of the tx_data array
+@param[out] uint8_t rx_data array that read data will be written too.
+@param[in] uint8_t rx_len number of bytes to be read from the SPI port.
+
+*/
+
+void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on SPI port
+                    uint8_t tx_len, //length of the tx data arry
+                    uint8_t *rx_data,//Input: array that will store the data read by the SPI port
+                    uint8_t rx_len //Option: number of bytes to be read from the SPI port
+                   )
+{
+  for (uint8_t i = 0; i < tx_len; i++)
+  {
+      //Spi_write(tx_Data[i]);
+      SPI3_SendByte(tx_Data[i]);
+  }
+
+  for (uint8_t i = 0; i < rx_len; i++)
+  {
+      //rx_data[i] = (uint8_t)Spi_read(0xFF);
+      rx_data[i] = SPI3_ReadByte();
+  }
+
+}
+
+/*!**********************************************************
+ \brief calaculates  and returns the CRC15
+
+  @param[in] uint8_t len: the length of the data array being passed to the function
+
+  @param[in] uint8_t data[] : the array of data that the PEC will be generated from
 
 
+  @returns The calculated pec15 as an unsigned int
+***********************************************************/
+uint16_t LTC68041_pec15_calc(uint8_t len, //Number of bytes that will be used to calculate a PEC
+                    uint8_t *data //Array of data that will be used to calculate  a PEC
+                   )
+{
+  uint16_t remainder,addr;
+
+  remainder = 16;//initialize the PEC
+  for (uint8_t i = 0; i<len; i++) // loops for each byte in data array
+  {
+    addr = ((remainder>>7)^data[i])&0xff;//calculate PEC table address
+    remainder = (remainder<<8)^crc15Table[addr];
+  }
+  return(remainder*2);//The CRC15 has a 0 in the LSB so the remainder must be multiplied by 2
+}
 
 
+/*****************************************************//**
+ \brief Write the LTC6804 configuration register
+
+ This command will write the configuration registers of the LTC6804-1s
+ connected in a daisy chain stack. The configuration is written in descending
+ order so the last device's configuration is written first.
+
+ @param[in] uint8_t total_ic; The number of ICs being written to.
+
+ @param[in] uint8_t config[][6] is a two dimensional array of the configuration data that will be written, the array should contain the 6 bytes for each
+ IC in the daisy chain. The lowest IC in the daisy chain should be the first 6 byte block in the array. The array should
+ have the following format:
+ |  config[0][0]| config[0][1] |  config[0][2]|  config[0][3]|  config[0][4]|  config[0][5]| config[1][0] |  config[1][1]|  config[1][2]|  .....    |
+ |--------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|-----------|
+ |IC1 CFGR0     |IC1 CFGR1     |IC1 CFGR2     |IC1 CFGR3     |IC1 CFGR4     |IC1 CFGR5     |IC2 CFGR0     |IC2 CFGR1     | IC2 CFGR2    |  .....    |
+
+ The function will calculate the needed PEC codes for the write data
+ and then transmit data to the ICs on a daisy chain.
 
 
+Command Code:
+-------------
+|               |             CMD[0]                              |                            CMD[1]                             |
+|---------------|---------------------------------------------------------------|---------------------------------------------------------------|
+|CMD[0:1]     |  15   |  14   |  13   |  12   |  11   |  10   |   9   |   8   |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
+|---------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+|WRCFG:         |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   1   |
+********************************************************/
+//void LTC6804_wrcfg(uint8_t total_ic, //The number of ICs being written to
+//                   uint8_t config[][6] //A two dimensional array of the configuration data that will be written
+//                  )
+//{
+//    const uint8_t BYTES_IN_REG = 6;
+//    const uint8_t CMD_LEN = 4+(8*total_ic);
+//    uint8_t *cmd;
+//    uint16_t cfg_pec;
+//    uint8_t cmd_index; //command counter
 
+//    cmd = (uint8_t *)malloc(CMD_LEN*sizeof(uint8_t));
 
+//    //1
+//    cmd[0] = 0x00;
+//    cmd[1] = 0x01;
+//    cmd[2] = 0x3d;
+//    cmd[3] = 0x6e;
 
+//    //2
+//    cmd_index = 4;
+//    for (uint8_t current_ic = total_ic; current_ic > 0; current_ic--)       // executes for each LTC6804 in daisy chain, this loops starts with
+//    {
+//        // the last IC on the stack. The first configuration written is
+//        // received by the last IC in the daisy chain
 
+//        for (uint8_t current_byte = 0; current_byte < BYTES_IN_REG; current_byte++) // executes for each of the 6 bytes in the CFGR register
+//        {
+//        // current_byte is the byte counter
 
+//            cmd[cmd_index] = config[current_ic-1][current_byte];            //adding the config data to the array to be sent
+//            cmd_index = cmd_index + 1;
+//        }
+//        //3
+//        cfg_pec = (uint16_t)pec15_calc(BYTES_IN_REG, &config[current_ic-1][0]);   // calculating the PEC for each ICs configuration register data
+//        cmd[cmd_index] = (uint8_t)(cfg_pec >> 8);
+//        cmd[cmd_index + 1] = (uint8_t)cfg_pec;
+//        cmd_index = cmd_index + 2;
+//  }
 
-
-
-
-
-
-
-
-
-
-
+//    //4
+//    wakeup_idle ();                                 //This will guarantee that the LTC6804 isoSPI port is awake.This command can be removed.
+//    //5
+//    output_low(LTC6804_CS);
+//    spi_write_array(CMD_LEN, cmd);
+//    output_high(LTC6804_CS);
+//    free(cmd);
+//}
 
 
 

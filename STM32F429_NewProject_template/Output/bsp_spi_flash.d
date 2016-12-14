@@ -39,3 +39,6 @@
 ..\..\output\bsp_spi_flash.o: ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h
 ..\..\output\bsp_spi_flash.o: ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h
 ..\..\output\bsp_spi_flash.o: D:\Keil_v5_for_ARM\ARM\ARMCC\Bin\..\include\stdio.h
+..\..\output\bsp_spi_flash.o: ..\..\User\bsp\spi\../delay/bsp_delay.h
+..\..\output\bsp_spi_flash.o: ..\..\User\bsp\spi\../../My_Peripheral_Driver/ltc6804/LTC68041.h
+..\..\output\bsp_spi_flash.o: D:\Keil_v5_for_ARM\ARM\ARMCC\Bin\..\include\stdlib.h

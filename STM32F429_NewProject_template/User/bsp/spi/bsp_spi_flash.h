@@ -42,7 +42,7 @@
 /*SPI接口定义-开头****************************/
 #define FLASH_SPI                           SPI3
 #define FLASH_SPI_CLK                       RCC_APB1Periph_SPI3
-#define FLASH_SPI_CLK_INIT                  RCC_APB2PeriphClockCmd
+#define FLASH_SPI_CLK_INIT                  RCC_APB1PeriphClockCmd
 
 #define FLASH_SPI_SCK_PIN                   GPIO_Pin_3                  
 #define FLASH_SPI_SCK_GPIO_PORT             GPIOB                       
@@ -80,7 +80,7 @@
 #define FLASH_DEBUG_ON         1
 
 #define FLASH_INFO(fmt,arg...)           printf("<<-FLASH-INFO->> "fmt"\n",##arg)
-#define FLASH_ERROR(fmt,arg...)          printf("<<-FLASH-ERROR->> "fmt"\n",##arg)
+#define SPI_ERROR(fmt,arg...)          printf("<<-SPI-ERROR->> "fmt"\n",##arg)
 #define FLASH_DEBUG(fmt,arg...)          do{\
                                           if(FLASH_DEBUG_ON)\
                                           printf("<<-FLASH-DEBUG->> [%d]"fmt"\n",__LINE__, ##arg);\
@@ -101,8 +101,8 @@ void SPI_Flash_PowerDown(void);
 void SPI_Flash_WAKEUP(void);
 
 
-u8 SPI_FLASH_ReadByte(void);
-u8 SPI_FLASH_SendByte(u8 byte);
+u8 SPI3_ReadByte(void);
+u8 SPI3_SendByte(u8 byte);
 u16 SPI_FLASH_SendHalfWord(u16 HalfWord);
 void SPI_FLASH_WriteEnable(void);
 void SPI_FLASH_WaitForWriteEnd(void);
@@ -114,56 +114,20 @@ void SPI_FLASH_WaitForWriteEnd(void);
 #define SPI_LTC6804_CS_LOW()      {FLASH_CS_GPIO_PORT->BSRRH=FLASH_CS_PIN;}
 #define SPI_LTC6804_CS_HIGH()     {FLASH_CS_GPIO_PORT->BSRRL=FLASH_CS_PIN;}
 
-const uint8_t TOTAL_IC = 1;//!<number of ICs in the daisy chain
 
-/******************************************************
- *** Global Battery Variables received from 6804 commands
- These variables store the results from the LTC6804
- register reads and the array lengths must be based
- on the number of ICs on the stack
- ******************************************************/
-uint16_t cell_codes[TOTAL_IC][12];
-/*!<
-  The cell codes will be stored in the cell_codes[][12] array in the following format:
+//void init_cfg(void);
+void LTC68041_wakeup_sleep( void );
 
-  |  cell_codes[0][0]| cell_codes[0][1] |  cell_codes[0][2]|    .....     |  cell_codes[0][11]|  cell_codes[1][0] | cell_codes[1][1]|  .....   |
-  |------------------|------------------|------------------|--------------|-------------------|-------------------|-----------------|----------|
-  |IC1 Cell 1        |IC1 Cell 2        |IC1 Cell 3        |    .....     |  IC1 Cell 12      |IC2 Cell 1         |IC2 Cell 2       | .....    |
-****/
+int8_t LTC6804_rdcfg(uint8_t total_ic, uint8_t r_config[][8]);
+void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on SPI port
+                    uint8_t tx_len, //length of the tx data arry
+                    uint8_t *rx_data,//Input: array that will store the data read by the SPI port
+                    uint8_t rx_len //Option: number of bytes to be read from the SPI port
+                   );
+uint16_t LTC68041_pec15_calc(uint8_t len,uint8_t *data);
+//void serial_print_hex(uint8_t data);
+//void LTC68041_print_rxconfig(void);
 
-uint16_t aux_codes[TOTAL_IC][6];
-/*!<
- The GPIO codes will be stored in the aux_codes[][6] array in the following format:
-
- |  aux_codes[0][0]| aux_codes[0][1] |  aux_codes[0][2]|  aux_codes[0][3]|  aux_codes[0][4]|  aux_codes[0][5]| aux_codes[1][0] |aux_codes[1][1]|  .....    |
- |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|---------------|-----------|
- |IC1 GPIO1        |IC1 GPIO2        |IC1 GPIO3        |IC1 GPIO4        |IC1 GPIO5        |IC1 Vref2        |IC2 GPIO1        |IC2 GPIO2      |  .....    |
-*/
-
-uint8_t tx_cfg[TOTAL_IC][6];
-/*!<
-  The tx_cfg[][6] stores the LTC6804 configuration data that is going to be written
-  to the LTC6804 ICs on the daisy chain. The LTC6804 configuration data that will be
-  written should be stored in blocks of 6 bytes. The array should have the following format:
-
- |  tx_cfg[0][0]| tx_cfg[0][1] |  tx_cfg[0][2]|  tx_cfg[0][3]|  tx_cfg[0][4]|  tx_cfg[0][5]| tx_cfg[1][0] |  tx_cfg[1][1]|  tx_cfg[1][2]|  .....    |
- |--------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|-----------|
- |IC1 CFGR0     |IC1 CFGR1     |IC1 CFGR2     |IC1 CFGR3     |IC1 CFGR4     |IC1 CFGR5     |IC2 CFGR0     |IC2 CFGR1     | IC2 CFGR2    |  .....    |
-
-*/
-
-uint8_t rx_cfg[TOTAL_IC][8];
-/*!<
-  the rx_cfg[][8] array stores the data that is read back from a LTC6804-1 daisy chain.
-  The configuration data for each IC  is stored in blocks of 8 bytes. Below is an table illustrating the array organization:
-
-|rx_config[0][0]|rx_config[0][1]|rx_config[0][2]|rx_config[0][3]|rx_config[0][4]|rx_config[0][5]|rx_config[0][6]  |rx_config[0][7] |rx_config[1][0]|rx_config[1][1]|  .....    |
-|---------------|---------------|---------------|---------------|---------------|---------------|-----------------|----------------|---------------|---------------|-----------|
-|IC1 CFGR0      |IC1 CFGR1      |IC1 CFGR2      |IC1 CFGR3      |IC1 CFGR4      |IC1 CFGR5      |IC1 PEC High     |IC1 PEC Low     |IC2 CFGR0      |IC2 CFGR1      |  .....    |
-*/
-
-void init_cfg();
-    
 /****************************************************
 ****************************************************/
 

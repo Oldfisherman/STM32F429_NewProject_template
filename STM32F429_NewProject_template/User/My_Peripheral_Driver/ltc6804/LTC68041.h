@@ -44,13 +44,16 @@ Copyright 2013 Linear Technology Corp. (LTC)
     Header for LTC6804-1 Multicell Battery Monitor
 */
  
-#ifndef LTC68041_H
-#define LTC68041_H
+#ifndef __LTC68041_H__
+#define __LTC68041_H__
 
 
 #ifndef LTC6804_CS
 #define LTC6804_CS QUIKEVAL_CS
 #endif
+
+#include "stm32f4xx.h"
+#include <stdio.h>
 
 
 /*
@@ -180,38 +183,31 @@ static const unsigned int crc15Table[256] = {0x0,0xc599, 0xceab, 0xb32, 0xd8cf, 
 #define DCP_ENABLED 1
 
 
-void LTC6804_initialize();
+/************************************************************************
+                My LTC6804 H file define
+************************************************************************/
 
-void set_adc(uint8_t MD, uint8_t DCP, uint8_t CH, uint8_t CHG);
+#define SPI_LTC6804_CS_LOW()      {FLASH_CS_GPIO_PORT->BSRRH=FLASH_CS_PIN;}
+#define SPI_LTC6804_CS_HIGH()     {FLASH_CS_GPIO_PORT->BSRRL=FLASH_CS_PIN;}
 
-void LTC6804_adcv(); 
 
-void LTC6804_adax();
+//void init_cfg(void);
+void LTC68041_wakeup_sleep( void );
 
-uint8_t LTC6804_rdcv(uint8_t reg, uint8_t total_ic, uint16_t cell_codes[][12]);
+int8_t LTC6804_rdcfg(uint8_t total_ic, uint8_t r_config[][8]);
+void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on SPI port
+                    uint8_t tx_len, //length of the tx data arry
+                    uint8_t *rx_data,//Input: array that will store the data read by the SPI port
+                    uint8_t rx_len //Option: number of bytes to be read from the SPI port
+                   );
+uint16_t LTC68041_pec15_calc(uint8_t len,uint8_t *data);
+//void serial_print_hex(uint8_t data);
+//void LTC68041_print_rxconfig(void);
 
-void LTC6804_rdcv_reg(uint8_t reg, uint8_t nIC, uint8_t *data);
-
-int8_t LTC6804_rdaux(uint8_t reg, uint8_t nIC, uint16_t aux_codes[][6]);
-
-void LTC6804_rdaux_reg(uint8_t reg, uint8_t nIC,uint8_t *data);
-
-void LTC6804_clrcell();
-
-void LTC6804_clraux();
-
-void LTC6804_wrcfg(uint8_t nIC,uint8_t config[][6]);
-
-int8_t LTC6804_rdcfg(uint8_t nIC, uint8_t r_config[][8]);
-
-void wakeup_idle();
-
-void wakeup_sleep();
-
-uint16_t pec15_calc(uint8_t len, uint8_t *data);
-
-void spi_write_array( uint8_t length, uint8_t *data);
-
-void spi_write_read(uint8_t *TxData, uint8_t TXlen, uint8_t *rx_data, uint8_t RXlen);
+/****************************************************
+****************************************************/
 
 #endif
+
+//文件暂时去除函数声明
+
