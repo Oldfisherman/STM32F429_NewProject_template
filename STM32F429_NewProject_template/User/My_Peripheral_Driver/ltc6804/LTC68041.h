@@ -55,6 +55,10 @@ Copyright 2013 Linear Technology Corp. (LTC)
 #include "stm32f4xx.h"
 #include <stdio.h>
 
+/******************** LTC68041 attention information ************************
+T_IDLE = 5.5ms
+T_WAKE = (max) 300us
+*****************************************************************************/
 
 /*
 	Pre computed crc15 table used for the LTC6804 PEC calculation
@@ -191,10 +195,11 @@ static const unsigned int crc15Table[256] = {0x0,0xc599, 0xceab, 0xb32, 0xd8cf, 
 #define SPI_LTC6804_CS_HIGH()     {FLASH_CS_GPIO_PORT->BSRRL=FLASH_CS_PIN;}
 
 
-//void init_cfg(void);
+void init_cfg(void);
 void LTC68041_wakeup_sleep( void );
+void LTC68041_wakeup_idle( void );
 
-int8_t LTC6804_rdcfg(uint8_t total_ic, uint8_t r_config[][8]);
+int8_t LTC68041_rdcfg(uint8_t total_ic, uint8_t r_config[][8]);
 void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on SPI port
                     uint8_t tx_len, //length of the tx data arry
                     uint8_t *rx_data,//Input: array that will store the data read by the SPI port
@@ -202,9 +207,21 @@ void LTC68041_spi_write_read (uint8_t tx_Data[],//array of data to be written on
                    );
 uint16_t LTC68041_pec15_calc(uint8_t len,uint8_t *data);
 void Spi_ltc68041_init(void);
-//void serial_print_hex(uint8_t data);
-//void LTC68041_print_rxconfig(void);
+void LTC68041_wrcfg(uint8_t total_ic,uint8_t config[][6]);
 
+void spi_write_array(uint8_t len,uint8_t data[]);
+
+void LTC68041_measurement_loop(void);
+void LTC68041_read_register (void);
+void LTC68041_print_config(void);
+void LTC68041_write_config (void);
+void LTC68041_spi_write_array(uint8_t len,uint8_t data[]);
+void LTC68041_adcv(void);
+void LTC68041_init(void);
+void LTC6804_set_adc(uint8_t MD,uint8_t DCP,uint8_t CH,uint8_t CHG);
+uint8_t LTC68041_rdcv(uint8_t reg,uint8_t total_ic,uint16_t cell_codes[][12]);
+void LTC68041_rdcv_reg(uint8_t reg,uint8_t total_ic,uint8_t *data);
+void LTC68041_print_cells(void);
 /****************************************************
 ****************************************************/
 
